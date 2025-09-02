@@ -1,0 +1,26 @@
+[
+    {
+        "id": "mod001",
+        "name": "",
+        "image": "",
+        "type": "Mechanical",
+        "brand": "",
+        "price": ""
+    },
+    {
+        "id": "mod002",
+        "name": "",
+        "image": "",
+        "type": "Variable",
+        "brand": "",
+        "price": ""
+    },
+    {
+        "id": "mod003",
+        "name": "",
+        "image": "",
+        "type": "Pod",
+        "brand": "",
+        "price": ""
+    }
+]

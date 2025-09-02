@@ -1,0 +1,26 @@
+[
+    {
+        "id": "aty001",
+        "name": "",
+        "image": "",
+        "type": "Rebuildable Dripping Atomizer",
+        "brand": "",
+        "price": ""
+    },
+    {
+        "id": "aty002",
+        "name": "",
+        "image": "",
+        "type": "Rebuildable Tank Atomizer",
+        "brand": "",
+        "price": ""
+    },
+    {
+        "id": "aty003",
+        "name": "",
+        "image": "",
+        "type": "Rebuildable Dripping Tank Atomizer",
+        "brand": "",
+        "price": ""
+    }
+]

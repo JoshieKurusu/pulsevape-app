@@ -1,0 +1,50 @@
+[
+    {
+        "id": "acc001",
+        "name": "",
+        "image": "",
+        "type": "Battery",
+        "brand": "",
+        "price": ""
+    },
+    {
+        "id": "acc002",
+        "name": "",
+        "image": "",
+        "type": "Charger",
+        "brand": "",
+        "price": ""
+    },
+    {
+        "id": "acc003",
+        "name": "",
+        "image": "",
+        "type": "Cotton",
+        "brand": "",
+        "price": ""
+    },
+    {
+        "id": "acc004",
+        "name": "",
+        "image": "",
+        "type": "Wire",
+        "brand": "",
+        "price": ""
+    },
+    {
+        "id": "acc005",
+        "name": "",
+        "image": "",
+        "type": "Cartridge",
+        "brand": "",
+        "price": ""
+    },
+    {
+        "id": "acc006",
+        "name": "",
+        "image": "",
+        "type": "Tools",
+        "brand": "",
+        "price": ""
+    }
+]
