@@ -6,7 +6,7 @@ PulseVape is a frontend-only vape shop interface designed to highlight modular a
 
 # 🚀 Features 
 - Dynamic Filtering - real-time category and tag-based filtering using flat JSON arrays.
-- Modular Components - resuseable UI blocks for header and footer. 
+- Modular Components - reuseable UI blocks for header and footer. 
 - Responsive Design - optimized for all screen sizes with fluid layout and transitions.
 - Accessible Markup - semantic HTML.
 
