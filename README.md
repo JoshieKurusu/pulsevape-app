@@ -17,4 +17,4 @@ PulseVape is a frontend-only vape shop interface designed to highlight modular a
 - JSON - flat arrays for scalable product data.
 
 # 🔗 Live Demo
-https://joshiekurusu.github.io/pulsevape-app/
+Coming Soon!
