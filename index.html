@@ -3,17 +3,76 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/svg+xml" href="src/assets/images/">
+        <link rel="icon" type="image/svg+xml" href="src/assets/images/logo.webp">
         <title>PulseVape</title>
         <link rel="stylesheet" href="src/styles/main.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
-        <script src="src/components/header.js" type="text/javascript" defer></script>
-        <script src="src/components/footer.js" type="text/javascript" defer></script>
+        <script src="src/components/layout/header.js" defer></script>
+        <script src="src/components/layout/footer.js" defer></script>
+        <script src="src/components/section/productCategories.js" defer></script>
+        <script src="src/components/section/bestSeller.js" defer></script>
+        <script src="src/components/section/brandsLogo.js" defer></script>
     </head>
     <body>
         <!-- HEADER CONTENT -->
         <header-component></header-component>
         <!-- MAIN CONTENT -->
+        <main>
+            <!-- HERO SECTION -->
+            <section id="hero-section" class="hero-section">
+                <div class="container-fluid">
+                    <div class="hero-content">
+                        <h6 class="hero-subheading">BEST WAYS TO VAPE</h6>
+                        <h1 class="hero-heading">Discover the <span class="change-color">Ultimate</span> Vaping Experience</h1>
+                        <p class="hero-paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum quaerat explicabo animi?</p>
+                        <button type="button" class="btn in-store-btn">
+                            Available In-Store
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M0.937483 11.0625H20.7918L17.5028 7.7895C17.1358 7.42425 17.1344 6.83067 17.4997 6.46368C17.8649 6.09665 18.4586 6.09529 18.8255 6.4605L23.7242 11.3355C23.7245 11.3358 23.7247 11.3361 23.725 11.3364C24.0911 11.7016 24.0922 12.2971 23.7251 12.6636C23.7248 12.6639 23.7245 12.6642 23.7243 12.6645L18.8256 17.5395C18.4587 17.9047 17.8651 17.9034 17.4998 17.5363C17.1345 17.1693 17.1359 16.5757 17.5029 16.2105L20.7918 12.9375H0.937483C0.419703 12.9375 -1.71661e-05 12.5178 -1.71661e-05 12C-1.71661e-05 11.4822 0.419703 11.0625 0.937483 11.0625Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="hero-image">
+                        <img src="/src/assets/images/hero-image-no-bg-2.png" alt="">
+                    </div>
+                </div>
+            </section>
+            <!-- BANNER SECTION -->
+            <section id="banner-1-section" class="banner-1-section">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="banner-1-content">
+                            <h2 class="banner-heading">Get the best vaping experience</h2>
+                            <div class="banner-image">
+                                <img src="/src/assets/images/banner-object-sample-7-nobg.png" alt="">
+                            </div>
+                            <div class="banner-logo">
+                                <img src="/src/assets/images/banner-logo-1-no-bg.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- PRODUCT CATEGORIES SECTION -->
+            <product-categories></product-categories>
+            <!-- VAPE MOD PRODUCTS SECTION -->
+            <best-seller data-category="mods"></best-seller>
+            <!-- BANNER SECTION -->
+            <section id="banner-2-section" class="banner-2-section">
+                <div class="container-fluid">
+                    <div class="card">
+                        <img src="/src/assets/images/banner-background.png" alt="">
+                        <div class="banner-2-content">
+                            <h2 class="banner-2-heading">Explore E-Juices</h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- E-JUICE PRODUCTS SECTION -->
+            <best-seller data-category="e-juices"></best-seller>
+            <!-- BRANDS SECTION -->
+            <brands-logo></brands-logo>
+        </main>
         <!-- FOOTER CONTENT -->
         <footer-component></footer-component>
         <!-- JAVASCRIPT -->
