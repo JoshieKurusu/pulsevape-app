@@ -3,6 +3,7 @@
         "id": "acc001",
         "name": "",
         "image": "",
+        "imageAlt": "",
         "type": "Battery",
         "brand": "",
         "price": ""
@@ -11,6 +12,7 @@
         "id": "acc002",
         "name": "",
         "image": "",
+        "imageAlt": "",
         "type": "Charger",
         "brand": "",
         "price": ""
@@ -19,6 +21,7 @@
         "id": "acc003",
         "name": "",
         "image": "",
+        "imageAlt": "",
         "type": "Cotton",
         "brand": "",
         "price": ""
@@ -27,6 +30,7 @@
         "id": "acc004",
         "name": "",
         "image": "",
+        "imageAlt": "",
         "type": "Wire",
         "brand": "",
         "price": ""
@@ -35,6 +39,7 @@
         "id": "acc005",
         "name": "",
         "image": "",
+        "imageAlt": "",
         "type": "Cartridge",
         "brand": "",
         "price": ""
@@ -43,6 +48,7 @@
         "id": "acc006",
         "name": "",
         "image": "",
+        "imageAlt": "",
         "type": "Tools",
         "brand": "",
         "price": ""

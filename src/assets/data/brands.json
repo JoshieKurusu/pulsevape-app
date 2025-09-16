@@ -1,0 +1,122 @@
+[
+    {
+        "id": "brand001",
+        "brandName": "BB Box Mod",
+        "brandLogo": "/src/assets/images/bb-box-mod-logo.png",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand002",
+        "brandName": "GeekVape",
+        "brandLogo": "/src/assets/images/geekvape-logo.png",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand003",
+        "brandName": "Vaporesso",
+        "brandLogo": "/src/assets/images/vaporesso-logo.png",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand004",
+        "brandName": "Oxva",
+        "brandLogo": "/src/assets/images",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand005",
+        "brandName": "Wismec",
+        "brandLogo": "/src/assets/images",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand006",
+        "brandName": "VapeBreed",
+        "brandLogo": "/src/assets/images",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand007",
+        "brandName": "Smoke On Box",
+        "brandLogo": "/src/assets/images",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand008",
+        "brandName": "Uwell",
+        "brandLogo": "/src/assets/images",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand009",
+        "brandName": "Fruit Monster",
+        "brandLogo": "/src/assets/images",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand0010",
+        "brandName": "Candy King on ICE",
+        "brandLogo": "/src/assets/images",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand0011",
+        "brandName": "Bliss",
+        "brandLogo": "/src/assets/images",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand0012",
+        "brandName": "Flavor Beast",
+        "brandLogo": "/src/assets/images",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand0013",
+        "brandName": "",
+        "brandLogo": "",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand0014",
+        "brandName": "",
+        "brandLogo": "",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand0015",
+        "brandName": "",
+        "brandLogo": "",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand0016",
+        "brandName": "",
+        "brandLogo": "",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand0017",
+        "brandName": "",
+        "brandLogo": "",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand0018",
+        "brandName": "",
+        "brandLogo": "",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand0019",
+        "brandName": "",
+        "brandLogo": "",
+        "brandLogoAlt": ""
+    },
+    {
+        "id": "brand0020",
+        "brandName": "",
+        "brandLogo": "",
+        "brandLogoAlt": ""
+    }
+]

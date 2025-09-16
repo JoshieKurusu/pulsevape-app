@@ -1,26 +1,92 @@
 [
     {
         "id": "mod001",
-        "name": "",
-        "image": "",
+        "name": "Kalasag Stabwood",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/mechanical-1.png",
+        "imageAlt": "",
         "type": "Mechanical",
-        "brand": "",
-        "price": ""
+        "brand": "BB Box Mod",
+        "price": "14,168.68"
     },
     {
         "id": "mod002",
-        "name": "",
-        "image": "",
+        "name": "Aegis Legend",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/variable-1.png",
+        "imageAlt": "",
         "type": "Variable",
-        "brand": "",
-        "price": ""
+        "brand": "GeekVape",
+        "price": "2,350.00"
     },
     {
         "id": "mod003",
-        "name": "",
-        "image": "",
+        "name": "Xros 3 Mini",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/pod-1.png",
+        "imageAlt": "",
         "type": "Pod",
-        "brand": "",
-        "price": ""
+        "brand": "Vaporesso",
+        "price": "1,590.18"
+    },
+    {
+        "id": "mod004",
+        "name": "Xlim Go",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/pod-2.png",
+        "imageAlt": "",
+        "type": "Pod",
+        "brand": "Oxva",
+        "price": "1,050.00"
+    },
+    {
+        "id": "mod005",
+        "name": "Aegis X",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/variable-2.png",
+        "imageAlt": "",
+        "type": "Variable",
+        "brand": "GeekVape",
+        "price": "2,650.00"
+    },
+    {
+        "id": "mod006",
+        "name": "Reuleaux RX200",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/variable-3.png",
+        "imageAlt": "",
+        "type": "Variable",
+        "brand": "Wismec",
+        "price": "1,850.00"
+    },
+    {
+        "id": "mod007",
+        "name": "Reborn Bantam Edition",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/mechanical-2.png",
+        "imageAlt": "",
+        "type": "Mechanical",
+        "brand": "VapeBreed",
+        "price": "2,500.00"
+    },
+    {
+        "id": "mod008",
+        "name": "Empire",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/mechanical-3.png",
+        "imageAlt": "",
+        "type": "Mechanical",
+        "brand": "Smoke On Box",
+        "price": "5,450.00"
+    },
+    {
+        "id": "mod009",
+        "name": "Caliburn GK2",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/pod-3.png",
+        "imageAlt": "",
+        "type": "Pod",
+        "brand": "Uwell",
+        "price": "1,595.70"
     }
 ]
