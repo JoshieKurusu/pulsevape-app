@@ -14,6 +14,242 @@
         <!-- HEADER CONTENT -->
         <header-component></header-component>
         <!-- MAIN CONTENT -->
+        <main>
+            <!-- BANNER SECTION -->
+            <section class="banner-3-section">
+                <div class="container-fluid">
+                    <div class="banner-3-content">
+                        <h2 class="banner-3-heading">Shop</h2>
+                    </div>
+                </div>
+            </section>
+            <!-- PRODUCT SECTION -->
+            <section class="product-section">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="top-filter-bar">
+                            <div class="listing">
+                                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#filterContent" aria-controls="filterContent" class="btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 512 512">
+                                        <path fill="currentColor" d="M0 93.7C0 77.3 13.3 64 29.7 64l452.7 0c16.4 0 29.7 13.3 29.7 29.7 0 7.9-3.1 15.4-8.7 21L336 281.9 336 482.3c0 16.4-13.3 29.7-29.7 29.7-7.9 0-15.4-3.1-21-8.7L183 401c-4.5-4.5-7-10.6-7-17L176 281.9 8.7 114.6C3.1 109.1 0 101.5 0 93.7zM73.9 112L217 255c4.5 4.5 7 10.6 7 17l0 102.1 64 64 0-166.1c0-6.4 2.5-12.5 7-17l143-143-364.1 0z" />
+                                    </svg>
+                                    Filter
+                                </button>
+                                <p class="products-counter">Showing 1 - 9 of 30 Results</p>
+                            </div>
+                            <div class="filters">
+                                <p class="sort-heading">Sort by:</p>
+                                <div class="dropdown">
+                                    <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn">
+                                        Price: <span class="selectedOption">Latest</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 384 512">
+                                            <path fill="currentColor" d="M169.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 306.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+                                        </svg>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="priceDropdown">
+                                        <li><a href="#" data-value="Latest" class="dropdown-item">Latest</a></li>
+                                        <li><a href="#" data-value="Featured" class="dropdown-item">Featured</a></li>
+                                        <li><a href="#" data-value="Best Selling" class="dropdown-item">Best Selling</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="bottom-filter-bar">
+                            <p class="selected-filters-heading">Selected filters:</p>
+                            <div class="selected-btns">
+                                <button type="button" class="btn selected-btn">
+                                    Vapes
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 384 512">
+                                        <path fill="currentColor" d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z" />
+                                    </svg>
+                                </button>
+                                <button type="button" class="btn selected-btn">
+                                    Latest
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 384 512">
+                                        <path fill="currentColor" d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z" />
+                                    </svg>
+                                </button>
+                                <button type="button" class="btn selected-btn">
+                                    Min ₱30 - Max ₱300
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 384 512">
+                                        <path fill="currentColor" d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z" />
+                                    </svg>
+                                </button>
+                                <button type="button" class="btn clear-all-btn">Clear all</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside id="filterContent" class="offcanvas offcanvas-start show">
+                    <div id="accordionSidebarContent" class="accordion">
+                        <!-- PRICE RANGE CONTENT -->
+                        <div class="accordion-item">
+                            <h6 class="accordion-header">
+                                <button type="button" data-bs-toggle="collapse" data-bs-target="#priceRangeCollapse" aria-expanded="true" aria-controls="priceRangeCollapse" class="btn price-range-btn">
+                                    Price Range
+                                    <span class="icon-toggle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 448 512" class="plus">
+                                            <path fill="currentColor" d="M256 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 160-160 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l160 0 0 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160 160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-160 0 0-160z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 448 512" class="minus">
+                                            <path fill="currentColor" d="M0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32z" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </h6>
+                            <div id="priceRangeCollapse" class="accordion-collapse collapse show">
+                                <div class="accordion-body">
+                                    <div class="price-input">
+                                        <div class="input-group">
+                                            <span class="input-group-text">Low</span>
+                                            <input type="number" value="390" onchange="setMinInput()" class="form-control min-input" />
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-text">High</span>
+                                            <input type="number" value="13780" onchange="setMaxInput()" class="form-control max-input" />
+                                        </div>
+                                    </div>
+                                    <div class="slider-wrapper">
+                                        <span class="slider-fill"></span>
+                                        <input type="range" value="1390" min="130" max="14170" oninput="slideMin()" class="min-value" />
+                                        <input type="range" value="12780" min="130" max="14170" oninput="slideMax()" class="max-value" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PRODUCT TYPE CONTENT -->
+                        <div class="accordion-item">
+                            <h6 class="accordion-header">
+                                <button type="button" data-bs-toggle="collapse" data-bs-target="#productTypeCollapse" aria-expanded="false" aria-controls="productTypeCollapse" class="btn collapsed product-type-btn">
+                                    Product Type
+                                    <span class="icon-toggle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 448 512" class="plus">
+                                            <path fill="currentColor" d="M256 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 160-160 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l160 0 0 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160 160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-160 0 0-160z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 448 512" class="minus">
+                                            <path fill="currentColor" d="M0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32z" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </h6>
+                            <div id="productTypeCollapse" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <ul class="product-type-list">
+                                        <li class="product-type-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="vapeMod" class="form-check-input">
+                                                <label for="vapeMod" class="form-check-label">Vape Mods</label>
+                                            </div>
+                                            <span class="specific-product-counter">(09)</span>
+                                        </li>
+                                        <li class="product-type-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="atomizer" class="form-check-input">
+                                                <label for="atomizer" class="form-check-label">Atomizers</label>
+                                            </div>
+                                            <span class="specific-product-counter">(03)</span>
+                                        </li>
+                                        <li class="product-type-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="e-juice" class="form-check-input">
+                                                <label for="e-juice" class="form-check-label">E-Juices</label>
+                                            </div>
+                                            <span class="specific-product-counter">(04)</span>
+                                        </li>
+                                        <li class="product-type-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="accessories" class="form-check-input">
+                                                <label for="accessories" class="form-check-label">Accessories</label>
+                                            </div>
+                                            <span class="specific-product-counter">(06)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FIlTER BY BRAND CONTENT -->
+                        <div class="accordion-item">
+                            <h6 class="accordion-header">
+                                <button type="button" data-bs-toggle="collapse" data-bs-target="#filterByBrandCollapse" aria-expanded="false" aria-controls="filterByBrandCollapse" class="btn collapsed product-type-btn">
+                                    Filter By Brand
+                                    <span class="icon-toggle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 448 512" class="plus">
+                                            <path fill="currentColor" d="M256 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 160-160 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l160 0 0 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160 160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-160 0 0-160z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 448 512" class="minus">
+                                            <path fill="currentColor" d="M0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32z" />
+                                        </svg>
+                                    </span>
+                                </button>
+                            </h6>
+                            <div id="filterByBrandCollapse" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <ul class="product-type-list">
+                                        <li class="product-type-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="bbBoxMod" class="form-check-input">
+                                                <label for="bbBoxMod" class="form-check-label">BB Box Mod</label>
+                                            </div>
+                                            <span class="specific-product-counter">(01)</span>
+                                        </li>
+                                        <li class="product-type-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="geekvape" class="form-check-input">
+                                                <label for="geekvape" class="form-check-label">Geekvape</label>
+                                            </div>
+                                            <span class="specific-product-counter">(02)</span>
+                                        </li>
+                                        <li class="product-type-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="vaporesso" class="form-check-input">
+                                                <label for="vaporesso" class="form-check-label">Vaporesso</label>
+                                            </div>
+                                            <span class="specific-product-counter">(01)</span>
+                                        </li>
+                                        <li class="product-type-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="oxva" class="form-check-input">
+                                                <label for="oxva" class="form-check-label">Oxva</label>
+                                            </div>
+                                            <span class="specific-product-counter">(01)</span>
+                                        </li>
+                                        <li class="product-type-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="wismec" class="form-check-input">
+                                                <label for="wismec" class="form-check-label">Wismec</label>
+                                            </div>
+                                            <span class="specific-product-counter">(01)</span>
+                                        </li>
+                                        <li class="product-type-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="vapebreed" class="form-check-input">
+                                                <label for="vapebreed" class="form-check-label">Vapebreed</label>
+                                            </div>
+                                            <span class="specific-product-counter">(01)</span>
+                                        </li>
+                                        <li class="product-type-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="uwell" class="form-check-input">
+                                                <label for="uwell" class="form-check-label">Uwell</label>
+                                            </div>
+                                            <span class="specific-product-counter">(01)</span>
+                                        </li>
+                                        <li class="product-type-item">
+                                            <div class="form-check">
+                                                <input type="checkbox" id="smokeOnBox" class="form-check-input">
+                                                <label for="smokeOnBox" class="form-check-label">SOB</label>
+                                            </div>
+                                            <span class="specific-product-counter">(01)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+        </main>
         <!-- FOOTER CONTENT -->
         <footer-component></footer-component>
         <!-- JAVASCRIPT -->

@@ -6,23 +6,21 @@ class brandsLogo extends HTMLElement {
         const file = `/src/assets/data/brands.json`;
 
         this.innerHTML = `
-            <section id="brand-logo-section" class="brand-logo-section">
-                <div class="container-fluid">
-                    <div class="brand-logo-content"></div>
-                </div>
-            </section>
+            <div class="container-fluid">
+                <div class="brand-logo-content"></div>
+            </div>
         `;
         fetch(file)
         .then(response => response.json())
         .then(brands => {
-            const brandCardsContainer = document.querySelector(".brand-logo-content");
+            const brandCardsContainer = this.querySelector(".brand-logo-content");
 
             brands.forEach(brand => {
                 const brandCard = document.createElement("div");
                 brandCard.className = "card";
                 brandCard.id = `${ brand.id }`;
                 brandCard.innerHTML = `
-                    <img src="${ brand.brandLogo }" alt="${ brand.brandLogoAlt }" />
+                    <img src="${ brand.brandLogo }" alt="${ brand.brandLogoAlt }" loading="lazy" />
                 `;
                 brandCardsContainer.appendChild(brandCard);
             });
@@ -32,8 +30,13 @@ class brandsLogo extends HTMLElement {
 }
 customElements.define("brands-logo", brandsLogo);
 
-window.onload = () => {
+const observer = new MutationObserver(() => {
     const track = document.querySelector(".brand-logo-content");
+
+    if (!track || track.children.length === 0) return;
+
+    observer.disconnect(); // Stop observing once ready
+
     const cards = Array.from(track.children);
     const trackWidth = track.scrollWidth;
 
@@ -58,4 +61,6 @@ window.onload = () => {
         requestAnimationFrame(animate);
     }
     animate();
-};
+});
+
+observer.observe(document.body, { childList: true, subtree: true });

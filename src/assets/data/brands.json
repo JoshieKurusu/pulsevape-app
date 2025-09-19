@@ -20,55 +20,55 @@
     {
         "id": "brand004",
         "brandName": "Oxva",
-        "brandLogo": "/src/assets/images",
+        "brandLogo": "/src/assets/images/oxva-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand005",
         "brandName": "Wismec",
-        "brandLogo": "/src/assets/images",
+        "brandLogo": "/src/assets/images/wismec-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand006",
         "brandName": "VapeBreed",
-        "brandLogo": "/src/assets/images",
+        "brandLogo": "/src/assets/images/vapebreed-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand007",
         "brandName": "Smoke On Box",
-        "brandLogo": "/src/assets/images",
+        "brandLogo": "/src/assets/images/sob-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand008",
         "brandName": "Uwell",
-        "brandLogo": "/src/assets/images",
+        "brandLogo": "/src/assets/images/uwell-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand009",
         "brandName": "Fruit Monster",
-        "brandLogo": "/src/assets/images",
+        "brandLogo": "/src/assets/images/fruit-monster-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand0010",
         "brandName": "Candy King on ICE",
-        "brandLogo": "/src/assets/images",
+        "brandLogo": "/src/assets/images/candy-king-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand0011",
         "brandName": "Bliss",
-        "brandLogo": "/src/assets/images",
+        "brandLogo": "/src/assets/images/bliss-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand0012",
         "brandName": "Flavor Beast",
-        "brandLogo": "/src/assets/images",
+        "brandLogo": "/src/assets/images/flavor-beast-logo.png",
         "brandLogoAlt": ""
     },
     {

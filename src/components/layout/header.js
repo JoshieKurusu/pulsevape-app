@@ -19,16 +19,16 @@ class Header extends HTMLElement {
                             </a>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a href="/" class="nav-link active">Home</a>
+                                    <a href="/" id="nav-home" class="nav-link">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/shop.html" class="nav-link">Shop</a>
+                                    <a href="/shop.html" id="nav-shop" class="nav-link">Shop</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/blogs.html" class="nav-link">Blogs</a>
+                                    <a href="/blogs.html" id="nav-blogs" class="nav-link">Blogs</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/about-us.html" class="nav-link">About Us</a>
+                                    <a href="/about-us.html" id="nav-about" class="nav-link">About Us</a>
                                 </li>
                             </ul>
                             <div class="menu-contact-info d-md-none">
@@ -57,3 +57,39 @@ class Header extends HTMLElement {
     }
 }
 customElements.define("header-component", Header);
+
+function initializeNavigation() {
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    const normalizePath = path => {
+        const cleaned = path.replace(/\/$/, "").replace(/\.html/, "");
+        return cleaned === "" ? "/" : cleaned;
+    };
+
+    const currentPath = normalizePath(window.location.pathname);
+
+    const pageLinks = [
+        { path: "/", navId: "nav-home" },
+        { path: "/shop", navId: "nav-shop" },
+        { path: "/blogs", navId: "nav-blogs" },
+        { path: "/about-us", navId: "nav-about" },
+    ];
+
+    const match = pageLinks.find(link => currentPath === link.path);
+
+    if (match) {
+        navLinks.forEach(link => link.classList.remove("active"));
+        const activeLink = Array.from(navLinks).find(link => link.getAttribute("href").replace(/\.html$/, "") === match.path);
+        activeLink?.classList.add("active");
+    }
+
+    if (!window.location.href.includes(".html")) {
+        navLinks.forEach(navLink => {
+            navLink.addEventListener("click", (event) => {
+                navLinks.forEach(link => link.classList.remove("active"));
+                event.currentTarget.classList.add("active");
+            });
+        });
+    }
+}
+initializeNavigation();

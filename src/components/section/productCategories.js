@@ -4,15 +4,13 @@ class ProductCategories extends HTMLElement {
     }
     connectedCallback() {
         this.innerHTML = `
-            <section id="category-section" class="category-section">
-                <div class="container-fluid">
-                    <div class="category-content">
-                        <h4 class="category-heading">Product Categories</h4>
-                        <div class="category-cards"></div>
-                        <div class="mod-cards"></div>
-                    </div>
+            <div class="container-fluid">
+                <div class="category-content">
+                    <h4 class="category-heading">Product Categories</h4>
+                    <div class="category-cards"></div>
+                    <div class="mod-cards"></div>
                 </div>
-            </section>
+            </div>
         `;
     }
 }
@@ -47,7 +45,7 @@ productCategoriesTitle.forEach(category => {
     categoryCard.className = "card";
 
     categoryCard.innerHTML = `
-        <img src="${ category.image }" alt="${ category.imageAlt }" />
+        <img src="${ category.image }" alt="${ category.imageAlt }" loading="lazy" />
         <div class="category-card-title">
             <h6>${ category.name }</h6>
         </div>
@@ -74,7 +72,7 @@ typeOfMods.forEach(type => {
     typeCard.className = "card";
 
     typeCard.innerHTML = `
-        <img src="${ type.image }" alt="${ type.imageAlt }" />
+        <img src="${ type.image }" alt="${ type.imageAlt }" loading="lazy" />
         <div class="mod-card-title">
             <h3>${ type.name }</h3>
         </div>

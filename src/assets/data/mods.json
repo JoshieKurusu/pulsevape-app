@@ -7,7 +7,7 @@
         "imageAlt": "",
         "type": "Mechanical",
         "brand": "BB Box Mod",
-        "price": "14,168.68"
+        "price": "14,170.00"
     },
     {
         "id": "mod002",
@@ -27,7 +27,7 @@
         "imageAlt": "",
         "type": "Pod",
         "brand": "Vaporesso",
-        "price": "1,590.18"
+        "price": "1,590.00"
     },
     {
         "id": "mod004",
@@ -87,6 +87,6 @@
         "imageAlt": "",
         "type": "Pod",
         "brand": "Uwell",
-        "price": "1,595.70"
+        "price": "1,595.00"
     }
 ]
