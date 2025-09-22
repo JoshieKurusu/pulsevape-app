@@ -78,9 +78,9 @@ class bestSellers extends HTMLElement {
         bestSellerCard.innerHTML = `
             <img src="${ bestSeller.image }" alt="${ bestSeller.imageAlt }" loading="lazy" />
             <div class="card-body">
-                <h6 class="bestSeller-name">${ bestSeller.name }</h6>
-                <p class="bestSeller-description">${ bestSeller.description }</p>
-                <h6 class="bestSeller-price">₱${ bestSeller.price }</h6>
+                <h6 class="product-name">${ bestSeller.name }</h6>
+                <p class="product-description">${ bestSeller.description }</p>
+                <h6 class="product-price">₱${ bestSeller.price }</h6>
             </div>
         `;
         return bestSellerCard;

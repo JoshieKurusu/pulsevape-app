@@ -1,56 +1,82 @@
 [
     {
         "id": "acc001",
-        "name": "",
-        "image": "",
+        "name": "Murata vtc4 18670 2100mAh 30A Battery",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/accessories-battery.png",
         "imageAlt": "",
         "type": "Battery",
-        "brand": "",
-        "price": ""
+        "brand": "Sony",
+        "price": "650.00"
     },
     {
         "id": "acc002",
-        "name": "",
-        "image": "",
+        "name": "MC2 Dual Bay Battery Charger",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/accessories-charger.png",
         "imageAlt": "",
         "type": "Charger",
-        "brand": "",
-        "price": ""
+        "brand": "Xtar Ant",
+        "price": "180.00"
     },
     {
         "id": "acc003",
-        "name": "",
-        "image": "",
+        "name": "Cotton Bacon",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/accessories-cotton.png",
         "imageAlt": "",
         "type": "Cotton",
-        "brand": "",
-        "price": ""
+        "brand": "Prime",
+        "price": "130.00"
     },
     {
         "id": "acc004",
-        "name": "",
-        "image": "",
+        "name": "RAM Wires N90 Claption - 24G",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/accessories-wire.png",
         "imageAlt": "",
         "type": "Wire",
-        "brand": "",
-        "price": ""
+        "brand": "Ram",
+        "price": "200.00"
     },
     {
         "id": "acc005",
-        "name": "",
-        "image": "",
+        "name": "Voopoo Argus Pod Cartridge",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/accessories-cartridge.png",
         "imageAlt": "",
         "type": "Cartridge",
-        "brand": "",
-        "price": ""
+        "brand": "Voopoo",
+        "price": "500.00"
     },
     {
         "id": "acc006",
-        "name": "",
-        "image": "",
+        "name": "Coiland RBA Build Tool Kit - 8 Piece",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/accessories-tools.png",
         "imageAlt": "",
         "type": "Tools",
-        "brand": "",
-        "price": ""
+        "brand": "Coiland",
+        "price": "850.00"
+    },
+    {
+        "id": "acc007",
+        "name": "Coil Master V3 DIY Vape Tool Kit",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/accessories-tools-1.png",
+        "imageAlt": "",
+        "type": "Tools",
+        "brand": "Coil Master",
+        "price": "1,875.00"
+    },
+    {
+        "id": "acc008",
+        "name": "LG HG2/LG Choco 18650 3000mAh 20A Battery",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/accessories-battery-1.png",
+        "imageAlt": "",
+        "type": "Battery",
+        "brand": "LG",
+        "price": "500.00"
     }
 ]

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/svg+xml" href="src/assets/images/logo.webp">
+        <link rel="icon" type="image/svg+xml" href="src/assets/images/pulseVape-icon.webp">
         <title>PulseVape</title>
         <link rel="stylesheet" href="src/styles/main.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
@@ -25,12 +25,14 @@
             </section>
             <!-- PRODUCT SECTION -->
             <section class="product-section">
+                <!-- PRODUCT CONTENT -->
                 <div class="container-fluid">
+                    <!-- FILTER BAR -->
                     <div class="card">
                         <div class="top-filter-bar">
                             <div class="listing">
-                                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#filterContent" aria-controls="filterContent" class="btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 512 512">
+                                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#filterContent" aria-controls="filterContent" class="btn filter-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="filter">
                                         <path fill="currentColor" d="M0 93.7C0 77.3 13.3 64 29.7 64l452.7 0c16.4 0 29.7 13.3 29.7 29.7 0 7.9-3.1 15.4-8.7 21L336 281.9 336 482.3c0 16.4-13.3 29.7-29.7 29.7-7.9 0-15.4-3.1-21-8.7L183 401c-4.5-4.5-7-10.6-7-17L176 281.9 8.7 114.6C3.1 109.1 0 101.5 0 93.7zM73.9 112L217 255c4.5 4.5 7 10.6 7 17l0 102.1 64 64 0-166.1c0-6.4 2.5-12.5 7-17l143-143-364.1 0z" />
                                     </svg>
                                     Filter
@@ -40,13 +42,13 @@
                             <div class="filters">
                                 <p class="sort-heading">Sort by:</p>
                                 <div class="dropdown">
-                                    <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn">
+                                    <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn dropdown-btn">
                                         Price: <span class="selectedOption">Latest</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 384 512">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 384 512" class="angle">
                                             <path fill="currentColor" d="M169.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 306.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
                                         </svg>
                                     </button>
-                                    <ul class="dropdown-menu" aria-labelledby="priceDropdown">
+                                    <ul aria-labelledby="priceDropdown" class="dropdown-menu">
                                         <li><a href="#" data-value="Latest" class="dropdown-item">Latest</a></li>
                                         <li><a href="#" data-value="Featured" class="dropdown-item">Featured</a></li>
                                         <li><a href="#" data-value="Best Selling" class="dropdown-item">Best Selling</a></li>
@@ -56,8 +58,8 @@
                         </div>
                         <hr>
                         <div class="bottom-filter-bar">
-                            <p class="selected-filters-heading">Selected filters:</p>
                             <div class="selected-btns">
+                                <p class="selected-filters-heading">Selected filters:</p>
                                 <button type="button" class="btn selected-btn">
                                     Vapes
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 384 512">
@@ -80,8 +82,13 @@
                             </div>
                         </div>
                     </div>
+                    <!-- PRODUCT CONTAINER -->
+                    <div class="product-container"></div>
+                    <!-- PAGINATION CONTAINER -->
+                    <div class="pagination-container"></div>
                 </div>
-                <aside id="filterContent" class="offcanvas offcanvas-start show">
+                <!-- FILTER SIDEBAR -->
+                <aside id="filterContent" class="offcanvas offcanvas-start">
                     <div id="accordionSidebarContent" class="accordion">
                         <!-- PRICE RANGE CONTENT -->
                         <div class="accordion-item">

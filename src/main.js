@@ -1,3 +1,4 @@
+// LAZY COMPONENTS
 document.addEventListener("DOMContentLoaded", () => {
     const lazySections = [
         { selector: "#category-section", module: "./components/section/productCategories.js"},
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// CHANGE THE SELECTED OPTION TEXT IN DROPDOWN BUTTON
 document.querySelectorAll(".dropdown-item").forEach(item => {
     item.addEventListener("click", event => {
         event.preventDefault();
@@ -36,11 +38,106 @@ document.querySelectorAll(".dropdown-item").forEach(item => {
     });
 });
 
+// MODULAR FUNCTION TO CREATE A PRODUCT CARD
+function createProductCard(product) {
+    const productCard = document.createElement("div");
+    productCard.className = "card";
+    productCard.id = product.id;
+
+    productCard.innerHTML = `
+        <img src="${ product.image }" alt="${ product.imageAlt }" loading="lazy" />
+        <div class="card-body">
+            <h6 class="product-name">${ product.name }</h6>
+            <p class="product-description">${ product.description }</p>
+            <h6 class="product-price">₱${ product.price }</h6>
+        </div>
+    `;
+    return productCard;
+}
+
+// RENDER A SPECIFIC PAGE OF PRODUCTS
+function renderPage(products, page = 1, cardsPerPage = 8) {
+    const productContainer = document.querySelector(".product-container");
+    productContainer.innerHTML = "";
+
+    const start = (page - 1) * cardsPerPage;
+    const end = start + cardsPerPage;
+    const sliceProducts = products.slice(start, end);
+
+    sliceProducts.forEach(product => {
+        const card = createProductCard(product);
+        productContainer.appendChild(card);
+    });
+    renderPaginationControls(products.length, page, cardsPerPage)
+}
+
+// RENDER PAGINATION BUTTONS
+function renderPaginationControls(totalItems, currentPage, cardsPerPage) {
+    const paginationContainer = document.querySelector(".pagination-container");
+    paginationContainer.innerHTML = "";
+
+    const totalPage = Math.ceil(totalItems / cardsPerPage);
+
+    // PREVIOUS BUTTON
+    const prevBtn = document.createElement("button");
+    prevBtn.textContent = "Previous";
+    prevBtn.className = "btn prev-btn";
+    prevBtn.type = "button";
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.addEventListener("click", () => renderPage(window.allProducts, currentPage - 1, cardsPerPage));
+    paginationContainer.appendChild(prevBtn);
+
+    // PAGE NUMBER BUTTONS
+    for (let i = 1; i <= totalPage; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        btn.className = `btn number-btn ${ i === currentPage ? "active" : "" }`;
+        btn.type = "button";
+        btn.addEventListener("click", () => renderPage(window.allProducts, i, cardsPerPage));
+        paginationContainer.appendChild(btn);
+    }
+
+    // NEXT BUTTON
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = "Next";
+    nextBtn.className = "btn next-btn";
+    nextBtn.type = "button";
+    nextBtn.disabled = currentPage === totalPage;
+    nextBtn.addEventListener("click", () => renderPage(window.allProducts, currentPage + 1, cardsPerPage));
+    paginationContainer.appendChild(nextBtn);
+}
+
+// FETCHING THE ALL THE DATA FROM THE 4 JSON FILES
+async function loadAllData() {
+    // JSON FILE URLS
+    const jsonFiles = [
+        "/src/assets/data/accessories.json",
+        "/src/assets/data/atomizers.json",
+        "/src/assets/data/e-juices.json",
+        "/src/assets/data/mods.json"
+    ];
+
+    try {
+        const responses = await Promise.all(jsonFiles.map(url => fetch(url)));
+        const dataArray = await Promise.all(responses.map(res => res.json()));
+        const combinedData = dataArray.flat(); // USE .flat() IF EACH FILE RETURNS AN ARRAY
+
+        window.allProducts = combinedData; // STORE GLOBALLY FOR PAGINATION
+        renderPage(combinedData, 1);
+    } catch (error) {
+        console.error("Error fetching JSON files:", error);
+    }
+}
+//  KICK OFF THE DATA LOADING
+loadAllData();
+
 window.onload = () => {
+    // SLIDER FOR FILTER PRICE RANGE
     slideMin();
     slideMax();
-};
+}
 
+// FILTER PRICE RANGE MIN AND MAX PRICE
 const minValue = document.querySelector(".min-value");
 const maxValue = document.querySelector(".max-value");
 

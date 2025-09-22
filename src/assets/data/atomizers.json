@@ -1,29 +1,32 @@
 [
     {
         "id": "aty001",
-        "name": "",
-        "image": "",
+        "name": "Dead Rabbit Solo RDA",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/atomizer-rda-type.png",
         "imageAlt": "",
         "type": "Rebuildable Dripping Atomizer",
-        "brand": "",
-        "price": ""
+        "brand": "Hellvape",
+        "price": "1,250.00"
     },
     {
         "id": "aty002",
-        "name": "",
-        "image": "",
+        "name": "Zeus X RTA",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/atomizer-rta-type.png",
         "imageAlt": "",
         "type": "Rebuildable Tank Atomizer",
-        "brand": "",
-        "price": ""
+        "brand": "GeekVape",
+        "price": "1,400.00"
     },
     {
         "id": "aty003",
-        "name": "",
-        "image": "",
+        "name": "Dejavu RDTA 2ml",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "/src/assets/images/atomizer-rdta-type.png",
         "imageAlt": "",
         "type": "Rebuildable Dripping Tank Atomizer",
-        "brand": "",
-        "price": ""
+        "brand": "DJV Dejavu",
+        "price": "2,200.00"
     }
 ]

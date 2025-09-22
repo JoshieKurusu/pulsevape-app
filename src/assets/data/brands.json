@@ -2,73 +2,73 @@
     {
         "id": "brand001",
         "brandName": "BB Box Mod",
-        "brandLogo": "/src/assets/images/bb-box-mod-logo.png",
+        "brandLogo": "/src/assets/images/brand-bb-box-mod-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand002",
         "brandName": "GeekVape",
-        "brandLogo": "/src/assets/images/geekvape-logo.png",
+        "brandLogo": "/src/assets/images/brand-geekvape-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand003",
         "brandName": "Vaporesso",
-        "brandLogo": "/src/assets/images/vaporesso-logo.png",
+        "brandLogo": "/src/assets/images/brand-vaporesso-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand004",
         "brandName": "Oxva",
-        "brandLogo": "/src/assets/images/oxva-logo.png",
+        "brandLogo": "/src/assets/images/brand-oxva-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand005",
         "brandName": "Wismec",
-        "brandLogo": "/src/assets/images/wismec-logo.png",
+        "brandLogo": "/src/assets/images/brand-wismec-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand006",
         "brandName": "VapeBreed",
-        "brandLogo": "/src/assets/images/vapebreed-logo.png",
+        "brandLogo": "/src/assets/images/brand-vapebreed-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand007",
         "brandName": "Smoke On Box",
-        "brandLogo": "/src/assets/images/sob-logo.png",
+        "brandLogo": "/src/assets/images/brand-sob-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand008",
         "brandName": "Uwell",
-        "brandLogo": "/src/assets/images/uwell-logo.png",
+        "brandLogo": "/src/assets/images/brand-uwell-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand009",
         "brandName": "Fruit Monster",
-        "brandLogo": "/src/assets/images/fruit-monster-logo.png",
+        "brandLogo": "/src/assets/images/brand-fruit-monster-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand0010",
         "brandName": "Candy King on ICE",
-        "brandLogo": "/src/assets/images/candy-king-logo.png",
+        "brandLogo": "/src/assets/images/brand-candy-king-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand0011",
         "brandName": "Bliss",
-        "brandLogo": "/src/assets/images/bliss-logo.png",
+        "brandLogo": "/src/assets/images/brand-bliss-logo.png",
         "brandLogoAlt": ""
     },
     {
         "id": "brand0012",
         "brandName": "Flavor Beast",
-        "brandLogo": "/src/assets/images/flavor-beast-logo.png",
+        "brandLogo": "/src/assets/images/brand-flavor-beast-logo.png",
         "brandLogoAlt": ""
     },
     {

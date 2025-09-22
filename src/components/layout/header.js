@@ -58,6 +58,7 @@ class Header extends HTMLElement {
 }
 customElements.define("header-component", Header);
 
+//* ADD SAFETY NET FOR THE INDEX.HTML
 function initializeNavigation() {
     const navLinks = document.querySelectorAll(".nav-link");
 
