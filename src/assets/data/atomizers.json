@@ -7,7 +7,7 @@
         "imageAlt": "",
         "type": "Rebuildable Dripping Atomizer",
         "brand": "Hellvape",
-        "price": "1,250.00"
+        "price": "1250"
     },
     {
         "id": "aty002",
@@ -17,7 +17,7 @@
         "imageAlt": "",
         "type": "Rebuildable Tank Atomizer",
         "brand": "GeekVape",
-        "price": "1,400.00"
+        "price": "1400"
     },
     {
         "id": "aty003",
@@ -27,6 +27,6 @@
         "imageAlt": "",
         "type": "Rebuildable Dripping Tank Atomizer",
         "brand": "DJV Dejavu",
-        "price": "2,200.00"
+        "price": "2200"
     }
 ]

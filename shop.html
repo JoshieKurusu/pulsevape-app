@@ -37,7 +37,7 @@
                                     </svg>
                                     Filter
                                 </button>
-                                <p class="products-counter">Showing 1 - 9 of 30 Results</p>
+                                <p class="pagination-label"></p>
                             </div>
                             <div class="filters">
                                 <p class="sort-heading">Sort by:</p>
@@ -58,27 +58,9 @@
                         </div>
                         <hr>
                         <div class="bottom-filter-bar">
-                            <div class="selected-btns">
+                            <div class="selected-filters">
                                 <p class="selected-filters-heading">Selected filters:</p>
-                                <button type="button" class="btn selected-btn">
-                                    Vapes
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 384 512">
-                                        <path fill="currentColor" d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z" />
-                                    </svg>
-                                </button>
-                                <button type="button" class="btn selected-btn">
-                                    Latest
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 384 512">
-                                        <path fill="currentColor" d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z" />
-                                    </svg>
-                                </button>
-                                <button type="button" class="btn selected-btn">
-                                    Min ₱30 - Max ₱300
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 384 512">
-                                        <path fill="currentColor" d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z" />
-                                    </svg>
-                                </button>
-                                <button type="button" class="btn clear-all-btn">Clear all</button>
+                                <div class="selected-btns"></div>
                             </div>
                         </div>
                     </div>
@@ -110,17 +92,17 @@
                                     <div class="price-input">
                                         <div class="input-group">
                                             <span class="input-group-text">Low</span>
-                                            <input type="number" value="390" onchange="setMinInput()" class="form-control min-input" />
+                                            <input type="number" value="" placeholder="0" onchange="setMinInput()" class="form-control min-input" />
                                         </div>
                                         <div class="input-group">
                                             <span class="input-group-text">High</span>
-                                            <input type="number" value="13780" onchange="setMaxInput()" class="form-control max-input" />
+                                            <input type="number" value="" placeholder="15000" onchange="setMaxInput()" class="form-control max-input" />
                                         </div>
                                     </div>
                                     <div class="slider-wrapper">
                                         <span class="slider-fill"></span>
-                                        <input type="range" value="1390" min="130" max="14170" oninput="slideMin()" class="min-value" />
-                                        <input type="range" value="12780" min="130" max="14170" oninput="slideMax()" class="max-value" />
+                                        <input type="range" value="0" min="0" max="15000" oninput="slideMin()" class="min-value" />
+                                        <input type="range" value="15000" min="0" max="15000" oninput="slideMax()" class="max-value" />
                                     </div>
                                 </div>
                             </div>
@@ -144,28 +126,28 @@
                                 <div class="accordion-body">
                                     <ul class="product-type-list">
                                         <li class="product-type-item">
-                                            <div class="form-check">
-                                                <input type="checkbox" id="vapeMod" class="form-check-input">
-                                                <label for="vapeMod" class="form-check-label">Vape Mods</label>
+                                            <div class="form-check product-type-form-check">
+                                                <input type="checkbox" id="vapeMods" class="form-check-input">
+                                                <label for="vapeMods" class="form-check-label">Vape Mods</label>
                                             </div>
                                             <span class="specific-product-counter">(09)</span>
                                         </li>
                                         <li class="product-type-item">
-                                            <div class="form-check">
-                                                <input type="checkbox" id="atomizer" class="form-check-input">
-                                                <label for="atomizer" class="form-check-label">Atomizers</label>
+                                            <div class="form-check product-type-form-check">
+                                                <input type="checkbox" id="atomizers" class="form-check-input">
+                                                <label for="atomizers" class="form-check-label">Atomizers</label>
                                             </div>
                                             <span class="specific-product-counter">(03)</span>
                                         </li>
                                         <li class="product-type-item">
-                                            <div class="form-check">
-                                                <input type="checkbox" id="e-juice" class="form-check-input">
-                                                <label for="e-juice" class="form-check-label">E-Juices</label>
+                                            <div class="form-check product-type-form-check">
+                                                <input type="checkbox" id="ejuices" class="form-check-input">
+                                                <label for="ejuices" class="form-check-label">E-Juices</label>
                                             </div>
                                             <span class="specific-product-counter">(04)</span>
                                         </li>
                                         <li class="product-type-item">
-                                            <div class="form-check">
+                                            <div class="form-check product-type-form-check">
                                                 <input type="checkbox" id="accessories" class="form-check-input">
                                                 <label for="accessories" class="form-check-label">Accessories</label>
                                             </div>
@@ -194,58 +176,58 @@
                                 <div class="accordion-body">
                                     <ul class="product-type-list">
                                         <li class="product-type-item">
-                                            <div class="form-check">
-                                                <input type="checkbox" id="bbBoxMod" class="form-check-input">
-                                                <label for="bbBoxMod" class="form-check-label">BB Box Mod</label>
+                                            <div class="form-check product-brand-form-check">
+                                                <input type="checkbox" id="bb-box-mod" class="form-check-input">
+                                                <label for="bb-box-mod" class="form-check-label">BB Box Mod</label>
                                             </div>
                                             <span class="specific-product-counter">(01)</span>
                                         </li>
                                         <li class="product-type-item">
-                                            <div class="form-check">
+                                            <div class="form-check product-brand-form-check">
                                                 <input type="checkbox" id="geekvape" class="form-check-input">
                                                 <label for="geekvape" class="form-check-label">Geekvape</label>
                                             </div>
                                             <span class="specific-product-counter">(02)</span>
                                         </li>
                                         <li class="product-type-item">
-                                            <div class="form-check">
+                                            <div class="form-check product-brand-form-check">
                                                 <input type="checkbox" id="vaporesso" class="form-check-input">
                                                 <label for="vaporesso" class="form-check-label">Vaporesso</label>
                                             </div>
                                             <span class="specific-product-counter">(01)</span>
                                         </li>
                                         <li class="product-type-item">
-                                            <div class="form-check">
+                                            <div class="form-check product-brand-form-check">
                                                 <input type="checkbox" id="oxva" class="form-check-input">
                                                 <label for="oxva" class="form-check-label">Oxva</label>
                                             </div>
                                             <span class="specific-product-counter">(01)</span>
                                         </li>
                                         <li class="product-type-item">
-                                            <div class="form-check">
+                                            <div class="form-check product-brand-form-check">
                                                 <input type="checkbox" id="wismec" class="form-check-input">
                                                 <label for="wismec" class="form-check-label">Wismec</label>
                                             </div>
                                             <span class="specific-product-counter">(01)</span>
                                         </li>
                                         <li class="product-type-item">
-                                            <div class="form-check">
+                                            <div class="form-check product-brand-form-check">
                                                 <input type="checkbox" id="vapebreed" class="form-check-input">
-                                                <label for="vapebreed" class="form-check-label">Vapebreed</label>
+                                                <label for="vapebreed" class="form-check-label">VapeBreed</label>
                                             </div>
                                             <span class="specific-product-counter">(01)</span>
                                         </li>
                                         <li class="product-type-item">
-                                            <div class="form-check">
+                                            <div class="form-check product-brand-form-check">
                                                 <input type="checkbox" id="uwell" class="form-check-input">
                                                 <label for="uwell" class="form-check-label">Uwell</label>
                                             </div>
                                             <span class="specific-product-counter">(01)</span>
                                         </li>
                                         <li class="product-type-item">
-                                            <div class="form-check">
-                                                <input type="checkbox" id="smokeOnBox" class="form-check-input">
-                                                <label for="smokeOnBox" class="form-check-label">SOB</label>
+                                            <div class="form-check product-brand-form-check">
+                                                <input type="checkbox" id="smoke-on-box" class="form-check-input">
+                                                <label for="smoke-on-box" class="form-check-label">SOB</label>
                                             </div>
                                             <span class="specific-product-counter">(01)</span>
                                         </li>

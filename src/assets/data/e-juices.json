@@ -9,7 +9,7 @@
         "brand": "Fruit Monster",
         "bottleSize": "100mL",
         "nicotine": "3mg",
-        "price": "450.00"
+        "price": "450"
     },
     {
         "id": "ej002",
@@ -21,7 +21,7 @@
         "brand": "Candy King on ICE",
         "bottleSize": "100mL",
         "nicotine": "0mg",
-        "price": "350.00"
+        "price": "350"
     },
     {
         "id": "ej003",
@@ -33,7 +33,7 @@
         "brand": "Bliss",
         "bottleSize": "30mL",
         "nicotine": "6mg",
-        "price": "150.00"
+        "price": "150"
     },
     {
         "id": "ej004",
@@ -45,6 +45,6 @@
         "brand": "Flavor Beast",
         "bottleSize": "30mL",
         "nicotine": "0mg",
-        "price": "130.00"
+        "price": "130"
     }
 ]

@@ -44,7 +44,7 @@
     @include transition(background-color 0.6s ease-in);
     @include font-family-subheading;
     &:focus {
-        border: none;
+        border-color: #141516;
     }
     &:hover {
         background-color: #02665E;
@@ -818,7 +818,7 @@ main {
                         display: flex;
                         align-items: center;
                         column-gap: 12px;
-                        .products-counter, .sort-heading {
+                        .pagination-label, .sort-heading {
                             @include font-family-subheading;
                             margin: 0;
                             font-size: clamp(0.813rem, 0.104vw + 0.792rem, 0.875rem);
@@ -839,7 +839,7 @@ main {
                                 @include transform(rotate(0deg));
                             }
                         }
-                        .products-counter {
+                        .pagination-label {
                             color: #a3a1a1;
                         }
                         .dropdown .dropdown-menu {
@@ -870,21 +870,44 @@ main {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    .selected-btns {
+                    .selected-filters {
                         display: flex;
                         align-items: center;
                         flex-wrap: wrap;
                         gap: 8px;
                         .selected-filters-heading {
                             @include counter-label-text;
+                            display: inline-flex;
+                            align-items: center;
                             margin: 0;
                             color: #FFF;
+                            height: clamp(29.59px, calc(29.59px + 3.61 * ((100vw - 320px) / 448)), 33.2px);
                         }
-                        .btn {
-                            @include filter-btns;
+                        .selected-btns {
+                            display: flex;
+                            align-items: center;
+                            flex-wrap: wrap;
+                            gap: 8px;
+                            .btn {
+                                @include filter-btns;
+                                pointer-events: none;
+                                svg {
+                                    pointer-events: all;
+                                    cursor: pointer;
+                                }
+                            }
                         }
                         .clear-all-btn {
-                            background: none;
+                            background: none !important;
+                            pointer-events: all;
+                            @include filter-btns;
+                            @include transition(border-bottom 0.6s ease-in);
+                            svg {
+                                display: none;
+                            }
+                            &:hover {
+                                border-bottom: 1px solid #02665E;
+                            }
                         }
                     }
                 }
@@ -910,7 +933,9 @@ main {
                     border: none;
                     background: #000;
                     font-weight: 700;
-                    @include counter-label-text;
+                    font-size: clamp(0.719rem, 0.26vw + 0.667rem, 0.875rem);
+                    line-height: clamp(0.862rem, 0.313vw + 0.8rem, 1.05rem);
+                    @include font-family-heading;
                     @include transition(background-color 0.6s ease-in);
                     &:hover {
                         background-color: #02665E;
@@ -1007,6 +1032,8 @@ main {
                                 .slider-fill {
                                     position: absolute;
                                     height: 100%;
+                                    left: 0;
+                                    right: 0;
                                     background-color: #00B8A9;
                                 }
                                 input[type=range] {

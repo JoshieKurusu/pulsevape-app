@@ -1,13 +1,13 @@
 [
     {
         "id": "acc001",
-        "name": "Murata vtc4 18670 2100mAh 30A Battery",
+        "name": "Murata VTC4 18670 2100mAh 30A Battery",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "/src/assets/images/accessories-battery.png",
         "imageAlt": "",
         "type": "Battery",
         "brand": "Sony",
-        "price": "650.00"
+        "price": "650"
     },
     {
         "id": "acc002",
@@ -17,7 +17,7 @@
         "imageAlt": "",
         "type": "Charger",
         "brand": "Xtar Ant",
-        "price": "180.00"
+        "price": "180"
     },
     {
         "id": "acc003",
@@ -27,7 +27,7 @@
         "imageAlt": "",
         "type": "Cotton",
         "brand": "Prime",
-        "price": "130.00"
+        "price": "130"
     },
     {
         "id": "acc004",
@@ -37,7 +37,7 @@
         "imageAlt": "",
         "type": "Wire",
         "brand": "Ram",
-        "price": "200.00"
+        "price": "200"
     },
     {
         "id": "acc005",
@@ -47,7 +47,7 @@
         "imageAlt": "",
         "type": "Cartridge",
         "brand": "Voopoo",
-        "price": "500.00"
+        "price": "500"
     },
     {
         "id": "acc006",
@@ -57,7 +57,7 @@
         "imageAlt": "",
         "type": "Tools",
         "brand": "Coiland",
-        "price": "850.00"
+        "price": "850"
     },
     {
         "id": "acc007",
@@ -67,7 +67,7 @@
         "imageAlt": "",
         "type": "Tools",
         "brand": "Coil Master",
-        "price": "1,875.00"
+        "price": "1875"
     },
     {
         "id": "acc008",
@@ -77,6 +77,6 @@
         "imageAlt": "",
         "type": "Battery",
         "brand": "LG",
-        "price": "500.00"
+        "price": "500"
     }
 ]
