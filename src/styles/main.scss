@@ -714,8 +714,8 @@ main {
                     @include font-heading;
                 }
                 .best-seller-cards {
-                    @include product-cards;
                     margin-bottom: 40px;
+                    @include product-cards;
                     @media (min-width: 640px) {
                         margin-bottom: 48px;
                     }
@@ -916,8 +916,8 @@ main {
                 }
             }
             .product-container {
-                @include product-cards;
                 margin: 40px 0;
+                @include product-cards;
                 @media (min-width: 640px) {
                     margin: 48px 0;
                 }

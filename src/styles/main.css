@@ -635,12 +635,12 @@ main .best-seller-section .container-fluid .best-seller-content .best-seller-hea
   line-height: clamp(1.425rem, 0.625vw + 1.3rem, 1.8rem);
 }
 main .best-seller-section .container-fluid .best-seller-content .best-seller-cards {
+  margin-bottom: 40px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px 12px;
   width: 100%;
-  margin-bottom: 40px;
 }
 main .best-seller-section .container-fluid .best-seller-content .best-seller-cards .card {
   width: 48%;
@@ -1114,12 +1114,12 @@ main .product-section .container-fluid .card .bottom-filter-bar .selected-filter
   border-bottom: 1px solid #02665E;
 }
 main .product-section .container-fluid .product-container {
+  margin: 40px 0;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px 12px;
   width: 100%;
-  margin: 40px 0;
 }
 main .product-section .container-fluid .product-container .card {
   width: 48%;
@@ -1523,4 +1523,6 @@ main .banner-4-section .container-fluid .banner-content .banner-header {
   margin: 0;
   font-size: clamp(1.5rem, 1.454vw + 1.209rem, 2.373rem);
   line-height: clamp(1.8rem, 1.745vw + 1.451rem, 2.847rem);
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */
