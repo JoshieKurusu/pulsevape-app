@@ -7,28 +7,28 @@ class Header extends HTMLElement {
             <header>
                 <nav class="navbar navbar-expand-md">
                     <div class="container-fluid">
-                        <a href="/index.html" class="navbar-brand">
+                        <a href="/pulsevape-app" class="navbar-brand">
                             <img  src="src/assets/images/pulseVape-brand-name-no-bg-2.png" alt="PulseVape">
                         </a>
                         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-label="Toggle navigation" class="navbar-toggler">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="offcanvas offcanvas-start" id="navbarContent">
-                            <a href="/index.html" class="navbar-brand d-md-none">
+                            <a href="/pulsevape-app" class="navbar-brand d-md-none">
                                 <img  src="src/assets/images/pulseVape-brand-name-no-bg-2.png" alt="PulseVape">
                             </a>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a href="/index.html" id="nav-home" class="nav-link">Home</a>
+                                    <a href="/pulsevape-app" id="nav-home" class="nav-link">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/shop.html" id="nav-shop" class="nav-link">Shop</a>
+                                    <a href="/pulsevape-app/shop.html" id="nav-shop" class="nav-link">Shop</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/blogs.html" id="nav-blogs" class="nav-link">Blogs</a>
+                                    <a href="/pulsevape-app/blogs.html" id="nav-blogs" class="nav-link">Blogs</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/about-us.html" id="nav-about" class="nav-link">About Us</a>
+                                    <a href="/pulsevape-app/about-us.html" id="nav-about" class="nav-link">About Us</a>
                                 </li>
                             </ul>
                             <div class="menu-contact-info d-md-none">
@@ -93,4 +93,5 @@ function initializeNavigation() {
         });
     }
 }
+
 initializeNavigation();
