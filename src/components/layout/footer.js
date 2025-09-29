@@ -8,7 +8,7 @@ class Footer extends HTMLElement {
                 <div class="container-fluid">
                     <div class="footer-top">
                         <div class="footer-branding">
-                            <a href="/pulsevape-app" class="brand">
+                            <a href="/index.html" class="brand">
                                 <img src="src/assets/images/pulseVape-brand-name-no-bg-2.png" alt="PulseVape">
                             </a>
                             <p class="paragraph">Experience unparalleled flavor and smooth clouds with Elite Vapor.</p>
@@ -73,5 +73,4 @@ class Footer extends HTMLElement {
         `;
     }
 }
-
 customElements.define("footer-component", Footer);

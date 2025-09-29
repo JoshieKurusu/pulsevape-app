@@ -90,4 +90,3 @@ if (typeOfModCards) {
         typeOfModCards.appendChild(createCategoryCard(category, "h3", "type-of-mod-card-title"));
     });
 }
-
