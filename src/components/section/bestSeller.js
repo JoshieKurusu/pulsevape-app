@@ -5,7 +5,7 @@ class bestSellers extends HTMLElement {
     }
     connectedCallback() {
         const category = this.getAttribute("data-category");
-        const file = `/src/assets/data/${ category }.json`;
+        const file = `src/assets/data/${ category }.json`;
 
         // Read card limit from attribute
         this.cardLimit = parseInt(this.getAttribute("data-limit")) || Infinity;

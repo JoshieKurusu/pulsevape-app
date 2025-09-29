@@ -3,7 +3,7 @@ class brandsLogo extends HTMLElement {
         super();
     }
     connectedCallback() {
-        const file = `/src/assets/data/brands.json`;
+        const file = `src/assets/data/brands.json`;
 
         this.innerHTML = `
             <div class="container-fluid">

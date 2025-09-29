@@ -10,7 +10,7 @@
 }
 
 body {
-  background: fixed url("src/assets/images/whole-page-background.jpg") no-repeat;
+  background: fixed url("../assets/images/whole-page-background.jpg") no-repeat;
 }
 
 header .navbar {
@@ -876,7 +876,7 @@ main .brand-logo-section .container-fluid .brand-logo-content .card img {
   }
 }
 main .banner-3-section {
-  background: url("src/assets/images/banner-background-2.jpg") center/cover no-repeat;
+  background: url("../assets/images/banner-background-2.jpg") center/cover no-repeat;
   position: relative;
 }
 main .banner-3-section::before {
@@ -1488,7 +1488,7 @@ main .product-section .offcanvas::-webkit-scrollbar-thumb {
   background-clip: content-box;
 }
 main .banner-4-section {
-  background: url("src/assets/images/banner-background-2.jpg") center/cover no-repeat;
+  background: url("../assets/images/banner-background-2.jpg") center/cover no-repeat;
   position: relative;
 }
 main .banner-4-section::before {
@@ -1523,6 +1523,4 @@ main .banner-4-section .container-fluid .banner-content .banner-header {
   margin: 0;
   font-size: clamp(1.5rem, 1.454vw + 1.209rem, 2.373rem);
   line-height: clamp(1.8rem, 1.745vw + 1.451rem, 2.847rem);
-}
-
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

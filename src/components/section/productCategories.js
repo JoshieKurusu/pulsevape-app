@@ -42,12 +42,12 @@ const productCategoriesTitle = [
 const typeOfMods = [
     {
         name: "Premuim Vapes",
-        image: "/src/assets/images/category-mod-type.jpg",
+        image: "src/assets/images/category-mod-type.jpg",
         imageAlt: "Premium Vapes image",
     },
     {
         name: "Elite Vapor",
-        image: "/src/assets/images/category-mod-type-1.jpg",
+        image: "src/assets/images/category-mod-type-1.jpg",
         imageAlt: "Elite Vapor image",
     }
 ];

@@ -423,10 +423,10 @@ function enableBrandCheckboxes() {
 
 function getDataFiles(getSelectedProductTypes) {
     const fileMap = {
-        accessories: "/src/assets/data/accessories.json",
-        vapeMods: "/src/assets/data/mods.json",
-        atomizers: "/src/assets/data/atomizers.json",
-        ejuices: "/src/assets/data/e-juices.json"
+        accessories: "src/assets/data/accessories.json",
+        vapeMods: "src/assets/data/mods.json",
+        atomizers: "src/assets/data/atomizers.json",
+        ejuices: "src/assets/data/e-juices.json"
     };
 
     return getSelectedProductTypes.length

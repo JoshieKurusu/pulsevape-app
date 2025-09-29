@@ -7,19 +7,19 @@ class Header extends HTMLElement {
             <header>
                 <nav class="navbar navbar-expand-md">
                     <div class="container-fluid">
-                        <a href="/" class="navbar-brand">
+                        <a href="/index.html" class="navbar-brand">
                             <img  src="src/assets/images/pulseVape-brand-name-no-bg-2.png" alt="PulseVape">
                         </a>
                         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-label="Toggle navigation" class="navbar-toggler">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="offcanvas offcanvas-start" id="navbarContent">
-                            <a href="/" class="navbar-brand d-md-none">
+                            <a href="/index.html" class="navbar-brand d-md-none">
                                 <img  src="src/assets/images/pulseVape-brand-name-no-bg-2.png" alt="PulseVape">
                             </a>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a href="/" id="nav-home" class="nav-link">Home</a>
+                                    <a href="/index.html" id="nav-home" class="nav-link">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/shop.html" id="nav-shop" class="nav-link">Shop</a>
@@ -70,10 +70,10 @@ function initializeNavigation() {
     const currentPath = normalizePath(window.location.pathname);
 
     const pageLinks = [
-        { path: "/", navId: "nav-home" },
-        { path: "/shop", navId: "nav-shop" },
-        { path: "/blogs", navId: "nav-blogs" },
-        { path: "/about-us", navId: "nav-about" },
+        { path: "/pulsevape-app", navId: "nav-home" },
+        { path: "/pulsevape-app/shop", navId: "nav-shop" },
+        { path: "/pulsevape-app/blogs", navId: "nav-blogs" },
+        { path: "/pulsevape-app/about-us", navId: "nav-about" },
     ];
 
     const match = pageLinks.find(link => currentPath === link.path);

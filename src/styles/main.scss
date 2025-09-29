@@ -241,7 +241,7 @@
     }
 }
 body {
-    background: fixed url("src/assets/images/whole-page-background.jpg") no-repeat;
+    background: fixed url("../assets/images/whole-page-background.jpg") no-repeat;
 }
 header {
     .navbar {
@@ -800,7 +800,7 @@ main {
         }
     }
     .banner-3-section {
-        background: url("src/assets/images/banner-background-2.jpg") center / cover no-repeat;
+        background: url("../assets/images/banner-background-2.jpg") center / cover no-repeat;
         @include page-header-banner;
     }
     .product-section {
@@ -1142,7 +1142,7 @@ main {
         }
     }
     .banner-4-section {
-        background: url("src/assets/images/banner-background-2.jpg") center / cover no-repeat;
+        background: url("../assets/images/banner-background-2.jpg") center / cover no-repeat;
         @include page-header-banner;
     }
 }
