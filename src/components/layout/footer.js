@@ -3,12 +3,14 @@ class Footer extends HTMLElement {
         super();
     }
     connectedCallback() {
+        // * DO THIS BEFORE UPLOADING IN GITHUB
+        // * CHANGE THE HREF="/" TO HREF="/pulsevape-app"
         this.innerHTML = `
             <footer>
                 <div class="container-fluid">
                     <div class="footer-top">
                         <div class="footer-branding">
-                            <a href="/index.html" class="brand">
+                            <a href="/pulsevape-app" class="brand">
                                 <img src="src/assets/images/pulseVape-brand-name-no-bg-2.png" alt="PulseVape">
                             </a>
                             <p class="paragraph">Experience unparalleled flavor and smooth clouds with Elite Vapor.</p>

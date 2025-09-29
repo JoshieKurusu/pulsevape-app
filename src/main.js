@@ -123,6 +123,8 @@ function getPageNumbers(currentPage, totalPage) {
 // TODO START: WRAP THEM INTO ONE (1) FUNCTION THAT ACCEPT FILTERED PRODUCTS, HANDLES PAGINATION STATE, UPDATES BOTH PRODUCT GRID AND PAGINATION UI
 // RENDER A SPECIFIC PAGE OF PRODUCTS
 function renderPage(products, page = 1, cardsPerPage) {
+    cardsPerPage = cardsPerPage || getCardsPerPage(window.innerWidth); // FALLBACK
+
     const productContainer = document.querySelector(".product-container");
     const paginationLabel = document.querySelector(".pagination-label");
     productContainer.innerHTML = "";
@@ -212,6 +214,13 @@ function renderPaginationControls(totalItems, currentPage, cardsPerPage) {
     paginationContainer.appendChild(nextBtn);
 }
 // TODO END
+
+function renderCurrentFilteredPage() {
+    const viewport = window.innerWidth;
+    const cardsPerPage = getCardsPerPage(viewport);
+    const source = window.filteredProducts?.length ? window.filteredProducts : window.allProducts;
+    renderPage(source, window.currentPage, cardsPerPage);
+}
 
 // INITIALIZE SETUP
 function resetPaginationState() {
@@ -379,7 +388,7 @@ function setupProductTypeCheckboxes() {
             loadAllData(selectedProductType);
 
             resetPriceFilterUI();
-            console.log("Product types checked:", getSelectedProductTypes());
+            // console.log("Product types checked:", getSelectedProductTypes());
         });
     });
 }
@@ -633,8 +642,5 @@ window.onload = () => {
 }
 
 window.addEventListener("resize", () => {
-    const viewport = window.innerWidth;
-    const cardsPerPage = getCardsPerPage(viewport);
-    const source = window.filteredProducts?.length ? window.filteredProducts : window.allProducts;
-    renderPage(source, window.currentPage, cardsPerPage);
+    renderCurrentFilteredPage();
 });

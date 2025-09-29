@@ -3,6 +3,8 @@ class Header extends HTMLElement {
         super();
     }
     connectedCallback() {
+        // * DO THIS BEFORE UPLOADING IN GITHUB
+        // * ADD /pulsevape-app INSIDE THE HREF BEFORE THE shop.html, blogs.html, AND about-us.html
         this.innerHTML = `
             <header>
                 <nav class="navbar navbar-expand-md">
@@ -69,6 +71,8 @@ function initializeNavigation() {
 
     const currentPath = normalizePath(window.location.pathname);
 
+    // * DO THIS BEFORE UPLOADING IN GITHUB
+    // * CHANGE THE PATH TO /pulsevape-app, /pulsevape-app/shop, /pulsevape-app/blogs, /pulsevape-app/about-us
     const pageLinks = [
         { path: "/pulsevape-app", navId: "nav-home" },
         { path: "/pulsevape-app/shop", navId: "nav-shop" },
