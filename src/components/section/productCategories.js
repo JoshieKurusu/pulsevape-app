@@ -19,22 +19,22 @@ customElements.define("product-categories", ProductCategories);
 const productCategoriesTitle = [
     {
         name: "Mods",
-        image: "/src/assets/images/category-mod-no-bg.png",
+        image: "src/assets/images/category-mod-no-bg.png",
         imageAlt: "Mods category image",
     },
     {
         name: "Atomizers",
-        image: "/src/assets/images/category-atomizer-1-no-bg.png",
+        image: "src/assets/images/category-atomizer-1-no-bg.png",
         imageAlt: "Atomizers category image",
     },
     {
         name: "E-Juices",
-        image: "/src/assets/images/category-ejuice-no-bg.png",
+        image: "src/assets/images/category-ejuice-no-bg.png",
         imageAlt: "E-Juices category image",
     },
     {
         name: "Accessories",
-        image: "/src/assets/images/category-accessories-no-bg.png",
+        image: "src/assets/images/category-accessories-no-bg.png",
         imageAlt: "Accessories category image",
     },
 ];
@@ -90,3 +90,4 @@ if (typeOfModCards) {
         typeOfModCards.appendChild(createCategoryCard(category, "h3", "type-of-mod-card-title"));
     });
 }
+
