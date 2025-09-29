@@ -13,7 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 const configure = lazySections.find(s => s.selector === `#${ target.id }`);
 
                 if (configure) {
-                    import(configure.module);
+                    import(configure.module).then(module => {
+                        if (typeof module.initSidebarFilter === "function") {
+                            module.initSidebarFilter();
+                        }
+                    });
                     observer.unobserve(target);
                 }
             }
@@ -64,6 +68,7 @@ function createProductCard(product) {
     return productCard;
 }
 
+// TODO START: OFTEN CHAINED MANUALLY. CREATE A FUNCTION THAT HADNLES THE FULL PIPELINE
 // FILTER PRODUCTS BY PRICE RANGE
 function filterProductsByPrice(products, min, max) {
     return products.filter(product => {
@@ -72,6 +77,16 @@ function filterProductsByPrice(products, min, max) {
         return price >= min && price <= max;
     });
 }
+function filterProductsByBrand(products, getSelectedProductBrands) {
+    if (!getSelectedProductBrands.length) return products; // NO FILTER APPLIED
+    // products.forEach(product => console.log("Raw brand:", product.brand));
+
+    return products.filter(product => {
+        const normalizedBrand = product.brand?.toLowerCase().replace(/\s+/g, "-");
+        return getSelectedProductBrands.includes(normalizedBrand);
+    });
+}
+// TODO END
 
 // PAGINATION LABEL
 function getPaginationLabel(currentPage, cardsPerPage, totalItems) {
@@ -105,6 +120,7 @@ function getPageNumbers(currentPage, totalPage) {
     return pages;
 }
 
+// TODO START: WRAP THEM INTO ONE (1) FUNCTION THAT ACCEPT FILTERED PRODUCTS, HANDLES PAGINATION STATE, UPDATES BOTH PRODUCT GRID AND PAGINATION UI
 // RENDER A SPECIFIC PAGE OF PRODUCTS
 function renderPage(products, page = 1, cardsPerPage) {
     const productContainer = document.querySelector(".product-container");
@@ -130,7 +146,6 @@ function renderPage(products, page = 1, cardsPerPage) {
 
     renderPaginationControls(products.length, safePage, cardsPerPage)
 }
-
 // RENDER PAGINATION BUTTONS
 function renderPaginationControls(totalItems, currentPage, cardsPerPage) {
     const paginationContainer = document.querySelector(".pagination-container");
@@ -196,6 +211,7 @@ function renderPaginationControls(totalItems, currentPage, cardsPerPage) {
     });
     paginationContainer.appendChild(nextBtn);
 }
+// TODO END
 
 // INITIALIZE SETUP
 function resetPaginationState() {
@@ -286,20 +302,22 @@ function clearAllSelectedFilters() {
     loadAllData([]);
 }
 
+// TODO START: REDUNDANT NEED TO CENTRALIZE THEM INTO SHARED JS MODULE
 function getSelectedProductTypes() {
     const productTypeCheckboxes = document.querySelectorAll(".product-type-form-check .form-check-input");
     return Array.from(productTypeCheckboxes)
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.id);
 }
-
 function getSelectedProductBrands() {
     const productBrandkboxes = document.querySelectorAll(".product-brand-form-check .form-check-input");
     return Array.from(productBrandkboxes)
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.id.toLowerCase());
 }
+// TODO END
 
+// TODO START: CONSIDER MERGING SETUP + SYNC INTO A SINGLE IRCHESTRATOR PER FILTER TYPE
 function setupProductTypeCheckboxes() {
     const productTypeCheckboxes = document.querySelectorAll(".product-type-form-check .form-check-input");
 
@@ -365,7 +383,6 @@ function setupProductTypeCheckboxes() {
         });
     });
 }
-
 function setupProductBrandCheckboxes() {
     const brandTypeCheckboxes = document.querySelectorAll(".product-brand-form-check .form-check-input");
 
@@ -384,6 +401,7 @@ function setupProductBrandCheckboxes() {
         // console.log("Brand checkboxes enabled?", isAnyBrandChecked());
     });
 }
+// TODO END
 
 function isAnyTypeChecked() {
     return [...document.querySelectorAll(".product-type-form-check .form-check-input")].some(checkboxes => checkboxes.checked);
@@ -416,16 +434,6 @@ function getDataFiles(getSelectedProductTypes) {
         : Object.values(fileMap); // DEFAULT: LOAD ALL
 }
 
-function filterProductsByBrand(products, getSelectedProductBrands) {
-    if (!getSelectedProductBrands.length) return products; // NO FILTER APPLIED
-    // products.forEach(product => console.log("Raw brand:", product.brand));
-
-    return products.filter(product => {
-        const normalizedBrand = product.brand?.toLowerCase().replace(/\s+/g, "-");
-        return getSelectedProductBrands.includes(normalizedBrand);
-    });
-}
-
 // FETCHING THE ALL THE DATA FROM THE 4 JSON FILES
 async function loadAllData(getSelectedProductTypes = []) {
     // JSON FILE URLS
@@ -448,6 +456,7 @@ async function loadAllData(getSelectedProductTypes = []) {
     }
 }
 
+// TODO START: CREATE A JS MODILE THAT ENCAPSULATES INPUT VALIDATION, SLIDER FILL UPDATES, FILTER TRIGGERING, BUTTON CREATION
 // FILTER PRICE RANGE MIN AND MAX PRICE
 const minValue = document.querySelector(".min-value");
 const maxValue = document.querySelector(".max-value");
@@ -476,7 +485,6 @@ function slideMin() {
     priceInputMin.value = minValue.value;
     setArea();
 }
-
 function slideMax() {
     let gap = parseFloat(maxValue.value) - parseFloat(minValue.value);
     if (gap <= minGap) {
@@ -487,7 +495,6 @@ function slideMax() {
     priceInputMax.value = maxValue.value;
     setArea();
 }
-
 function setMinInput() {
     let minPrice = parseFloat(priceInputMin.value);
     if (minPrice < sliderMinValue) {
@@ -497,7 +504,6 @@ function setMinInput() {
     minValue.value = priceInputMin.value;
     slideMin();
 }
-
 function setMaxInput() {
     let maxPrice = parseFloat(priceInputMax.value);
     if (maxPrice > sliderMaxValue) {
@@ -507,7 +513,6 @@ function setMaxInput() {
     maxValue.value = priceInputMax.value;
     slideMax();
 }
-
 function setArea() {
     if (!window.allProducts || !Array.isArray(window.allProducts)) {
         console.warn("Product data not loaded yet.");
@@ -563,6 +568,7 @@ function setArea() {
         }
     }
 }
+// TODO END
 
 function resetPriceFilterUI() {
     // checkbox.checked = false;

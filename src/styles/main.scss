@@ -130,6 +130,33 @@
     max-width: 980px;
     margin: 0 auto;
 }
+@mixin page-header-banner {
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.9;
+        background: linear-gradient(40deg,rgba(20, 20, 20, 1) 30%, rgba(56, 56, 56, 1) 100%);
+    }
+    .container-fluid {
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+        height: clamp(170px, calc(170px + 54 * ((100vw - 320px) / 672)), 224px);
+        .banner-content {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 2;
+            @include transform(translate(-50%, -50%));
+            .banner-header {
+                @include banner-heading;
+            }
+        }
+    }
+}
 @mixin offcanvas {
     width: calc(clamp(300px, 90vw, 330px) - 59px);
     background: #2e2e2e;
@@ -773,32 +800,8 @@ main {
         }
     }
     .banner-3-section {
-        position: relative;
         background: url("/src/assets/images/banner-background-2.jpg") center / cover no-repeat;
-        &::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            opacity: 0.9;
-            background: linear-gradient(40deg,rgba(20, 20, 20, 1) 30%, rgba(56, 56, 56, 1) 100%);
-        }
-        .container-fluid {
-            padding: 0;
-            position: relative;
-            overflow: hidden;
-            height: clamp(170px, calc(170px + 54 * ((100vw - 320px) / 672)), 224px);
-            .banner-3-content {
-                width: 100%;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                z-index: 2;
-                @include transform(translate(-50%, -50%));
-                .banner-3-heading {
-                    @include banner-heading;
-                }
-            }
-        }
+        @include page-header-banner;
     }
     .product-section {
         .container-fluid {
@@ -1137,5 +1140,9 @@ main {
                 background-clip: content-box;
             }
         }
+    }
+    .banner-4-section {
+        background: url("/src/assets/images/banner-background-2.jpg") center / cover no-repeat;
+        @include page-header-banner;
     }
 }
