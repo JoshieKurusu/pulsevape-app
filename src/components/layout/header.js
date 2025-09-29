@@ -8,14 +8,14 @@ class Header extends HTMLElement {
                 <nav class="navbar navbar-expand-md">
                     <div class="container-fluid">
                         <a href="/" class="navbar-brand">
-                            <img  src="src/assets/images/PulseVape-brand-name-no-bg-2.png" alt="PulseVape">
+                            <img  src="src/assets/images/pulseVape-brand-name-no-bg-2.png" alt="PulseVape">
                         </a>
                         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-label="Toggle navigation" class="navbar-toggler">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="offcanvas offcanvas-start" id="navbarContent">
                             <a href="/" class="navbar-brand d-md-none">
-                                <img  src="src/assets/images/PulseVape-brand-name-no-bg-2.png" alt="PulseVape">
+                                <img  src="src/assets/images/pulseVape-brand-name-no-bg-2.png" alt="PulseVape">
                             </a>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -58,7 +58,7 @@ class Header extends HTMLElement {
 }
 customElements.define("header-component", Header);
 
-//* ADD SAFETY NET FOR THE INDEX.HTML
+// TODO START: ADD SAFETY NET FOR THE INDEX.HTML
 function initializeNavigation() {
     const navLinks = document.querySelectorAll(".nav-link");
 

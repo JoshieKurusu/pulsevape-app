@@ -9,7 +9,7 @@ class Footer extends HTMLElement {
                     <div class="footer-top">
                         <div class="footer-branding">
                             <a href="/" class="brand">
-                                <img src="src/assets/images/PulseVape-brand-name-no-bg-2.png" alt="PulseVape">
+                                <img src="src/assets/images/pulseVape-brand-name-no-bg-2.png" alt="PulseVape">
                             </a>
                             <p class="paragraph">Experience unparalleled flavor and smooth clouds with Elite Vapor.</p>
                             <ul class="social-bar">
