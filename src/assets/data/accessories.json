@@ -11,6 +11,16 @@
     },
     {
         "id": "acc002",
+        "name": "LG HG2/LG Choco 18650 3000mAh 20A Battery",
+        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
+        "image": "src/assets/images/accessories-battery-1.png",
+        "imageAlt": "",
+        "type": "Battery",
+        "brand": "LG",
+        "price": "500"
+    },
+    {
+        "id": "acc003",
         "name": "MC2 Dual Bay Battery Charger",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-charger.png",
@@ -20,7 +30,7 @@
         "price": "180"
     },
     {
-        "id": "acc003",
+        "id": "acc004",
         "name": "Cotton Bacon",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-cotton.png",
@@ -30,7 +40,7 @@
         "price": "130"
     },
     {
-        "id": "acc004",
+        "id": "acc005",
         "name": "RAM Wires N90 Claption - 24G",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-wire.png",
@@ -40,7 +50,7 @@
         "price": "200"
     },
     {
-        "id": "acc005",
+        "id": "acc006",
         "name": "Voopoo Argus Pod Cartridge",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-cartridge.png",
@@ -50,7 +60,7 @@
         "price": "500"
     },
     {
-        "id": "acc006",
+        "id": "acc007",
         "name": "Coiland RBA Build Tool Kit - 8 Piece",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-tools.png",
@@ -60,7 +70,7 @@
         "price": "850"
     },
     {
-        "id": "acc007",
+        "id": "acc008",
         "name": "Coil Master V3 DIY Vape Tool Kit",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-tools-1.png",
@@ -68,15 +78,5 @@
         "type": "Tools",
         "brand": "Coil Master",
         "price": "1875"
-    },
-    {
-        "id": "acc008",
-        "name": "LG HG2/LG Choco 18650 3000mAh 20A Battery",
-        "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
-        "image": "src/assets/images/accessories-battery-1.png",
-        "imageAlt": "",
-        "type": "Battery",
-        "brand": "LG",
-        "price": "500"
     }
 ]
