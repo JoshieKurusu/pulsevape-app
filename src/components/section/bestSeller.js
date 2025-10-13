@@ -80,7 +80,7 @@ class bestSellers extends HTMLElement {
             <div class="card-body">
                 <h6 class="product-name">${ bestSeller.name }</h6>
                 <p class="product-description">${ bestSeller.description }</p>
-                <h6 class="product-price">₱${ bestSeller.price }</h6>
+                <h6 class="product-price">₱${ bestSeller.price }.00</h6>
             </div>
         `;
         return bestSellerCard;

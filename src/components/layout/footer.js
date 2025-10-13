@@ -60,9 +60,6 @@ class Footer extends HTMLElement {
                                     <li class="useful-link-item">
                                         <a href="#" class="useful-link">Contact Us</a>
                                     </li>
-                                    <li class="useful-link-item">
-                                        <a href="#" class="useful-link">Wishlist</a>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="footer-contact">
