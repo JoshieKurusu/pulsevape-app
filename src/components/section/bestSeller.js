@@ -28,7 +28,8 @@ class bestSellers extends HTMLElement {
             .then(response => response.json())
             .then(bestSellers => {
                 // console.log("Fetched best sellers:", bestSellers);
-                this.bestSellersData = bestSellers;
+                this.bestSellersData = Array.isArray(bestSellers) ? bestSellers : [bestSellers]; // fallback if its a single object
+                this.recommendedItems = this.bestSellersData.filter(item => item.recommendation === "Best Seller");
                 this.renderCards();
             })
             .catch(err => console.error(`Error loading ${ category } data:`, err));
@@ -45,7 +46,7 @@ class bestSellers extends HTMLElement {
         // console.log("Rendering cards. Container:", bestSellerCardsContainer);
         // console.log("Best sellers data:", this.bestSellersData);
 
-        if (!bestSellerCardsContainer || !Array.isArray(this.bestSellersData) || this.bestSellersData.length === 0) return;
+        if (!bestSellerCardsContainer || !Array.isArray(this.recommendedItems)) return;
 
         const categoryCaps = {
             "mods": { mobile: 8, tablet: 9, desktop: 8 },
@@ -62,7 +63,7 @@ class bestSellers extends HTMLElement {
         };
 
         const maxCards = getMaxCards();
-        const bestSellersToRender = this.bestSellersData.slice(0, Math.min(maxCards, this.cardLimit, this.bestSellersData.length));
+        const bestSellersToRender = this.recommendedItems.slice(0, Math.min(maxCards, this.cardLimit, this.recommendedItems.length));
 
         bestSellerCardsContainer.innerHTML = "";
 

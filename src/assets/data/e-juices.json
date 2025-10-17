@@ -1,6 +1,7 @@
 [
     {
         "id": "ej001",
+        "recommendation": "Best Seller",
         "name": "Mixed Berry",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/ejuice-fruity.png",
@@ -13,6 +14,7 @@
     },
     {
         "id": "ej002",
+        "recommendation": "Best Seller",
         "name": "Strawberry Watermelon Bubblegum",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/ejuice-mint.png",
@@ -25,6 +27,7 @@
     },
     {
         "id": "ej003",
+        "recommendation": "Best Seller",
         "name": "Blueberry Cheesecake",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/ejuice-pastry.png",
@@ -37,6 +40,7 @@
     },
     {
         "id": "ej004",
+        "recommendation": "Best Seller",
         "name": "Root B",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/ejuice-drinks.png",

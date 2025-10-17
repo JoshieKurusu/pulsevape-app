@@ -1,6 +1,7 @@
 [
     {
         "id": "aty001",
+        "recommendation": "Latest",
         "name": "Dead Rabbit Solo RDA",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/atomizer-rda-type.png",
@@ -11,6 +12,7 @@
     },
     {
         "id": "aty002",
+        "recommendation": "Latest",
         "name": "Zeus X RTA",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/atomizer-rta-type.png",
@@ -21,6 +23,7 @@
     },
     {
         "id": "aty003",
+        "recommendation": "Latest",
         "name": "Dejavu RDTA 2ml",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/atomizer-rdta-type.png",

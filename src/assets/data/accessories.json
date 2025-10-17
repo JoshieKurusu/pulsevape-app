@@ -1,6 +1,7 @@
 [
     {
         "id": "acc001",
+        "recommendation": "Latest",
         "name": "Murata VTC4 18670 2100mAh 30A Battery",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-battery.png",
@@ -11,6 +12,7 @@
     },
     {
         "id": "acc002",
+        "recommendation": "Latest",
         "name": "LG HG2/LG Choco 18650 3000mAh 20A Battery",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-battery-1.png",
@@ -21,6 +23,7 @@
     },
     {
         "id": "acc003",
+        "recommendation": "Latest",
         "name": "MC2 Dual Bay Battery Charger",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-charger.png",
@@ -31,6 +34,7 @@
     },
     {
         "id": "acc004",
+        "recommendation": "Latest",
         "name": "Cotton Bacon",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-cotton.png",
@@ -41,6 +45,7 @@
     },
     {
         "id": "acc005",
+        "recommendation": "Latest",
         "name": "RAM Wires N90 Claption - 24G",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-wire.png",
@@ -51,6 +56,7 @@
     },
     {
         "id": "acc006",
+        "recommendation": "Latest",
         "name": "Voopoo Argus Pod Cartridge",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-cartridge.png",
@@ -61,6 +67,7 @@
     },
     {
         "id": "acc007",
+        "recommendation": "Latest",
         "name": "Coiland RBA Build Tool Kit - 8 Piece",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-tools.png",
@@ -71,6 +78,7 @@
     },
     {
         "id": "acc008",
+        "recommendation": "Latest",
         "name": "Coil Master V3 DIY Vape Tool Kit",
         "description": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted",
         "image": "src/assets/images/accessories-tools-1.png",
