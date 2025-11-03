@@ -1,12 +1,13 @@
-// LAZY COMPONENTS
+import { createProductCard } from "./components/section/productCard.js";
+
 document.addEventListener("DOMContentLoaded", () => {
+    // LAZY COMPONENTS
     const lazySections = [
         { selector: "#category-section", module: "./components/section/productCategories.js"},
         { selector: "#best-seller-section", module: "./components/section/bestSeller.js"},
         { selector: "#brand-logo-section", module: "./components/section/brandsLogo.js"},
         { selector: "#banner-section", module: "./components/section/banner.js"}
     ];
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -24,11 +25,39 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-
     lazySections.forEach(({ selector }) => {
         const element = document.querySelector(selector);
         if (element) observer.observe(element);
     });
+
+    // DISABLE THE FILTER BY BRAND CHECKBOXES
+    disableBrandCheckboxes();
+
+    // ENSURE THE PAGINATION SYSTEM IS STABLE
+    resetPaginationState()
+
+    //  KICK OFF THE DATA LOADING
+    loadAllData();
+
+    // ATTACK EVENT LISTENERS. THERE'S NO NEED FOR INLINE onChange/oninput
+    // INPUT VALUE FOR FITLER PRICE RANGE
+    priceInputMin.addEventListener("input", setMinInput);
+    priceInputMax.addEventListener("input", setMaxInput);
+    // SLIDER FOR FILTER PRICE RANGE
+    minValue.addEventListener("input", slideMin);
+    maxValue.addEventListener("input", slideMax);
+
+    // PRODUCT TYPE, BRAND, MODEL TYPE CHECKBOXES
+    setupProductTypeCheckboxes();
+    setupProductBrandCheckboxes();
+    setupModelTypeCheckboxes();
+
+    // STATIC PRODUCT COUNTER
+    loadStaticCounters();
+});
+
+window.addEventListener("resize", () => {
+    renderCurrentFilteredPage();
 });
 
 // CHANGE THE SELECTED OPTION TEXT IN DROPDOWN BUTTON
@@ -42,32 +71,6 @@ document.querySelectorAll(".dropdown-item").forEach(item => {
         document.querySelector(".selectedOption").textContent = selected;
     });
 });
-
-// ADDING COMMA IF PRICE IS IN THOUSAND
-function formatPrice(price) {
-    return Number(price).toLocaleString("en-PH", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
-}
-
-// CREATE A PRODUCT CARD
-function createProductCard(product) {
-    const productCard = document.createElement("div");
-    productCard.className = "card";
-    productCard.id = product.id;
-    productCard.setAttribute("data-price", product.price);
-
-    productCard.innerHTML = `
-        <img src="${ product.image }" alt="${ product.imageAlt }" loading="lazy" />
-        <div class="card-body">
-            <h6 class="product-name">${ product.name }</h6>
-            <p class="product-description">${ product.description }</p>
-            <h6 class="product-price">₱${ formatPrice(product.price) }</h6>
-        </div>
-    `;
-    return productCard;
-}
 
 // TODO START: OFTEN CHAINED MANUALLY. CREATE A FUNCTION THAT HADNLES THE FULL PIPELINE
 // FILTER PRODUCTS BY PRICE RANGE
@@ -98,7 +101,7 @@ function filterModelType(products, getSelectedModelTypes) {
 }
 // TODO END
 
-// PAGINATION LABEL
+// SHOP PAGE PAGINATION LABEL
 function getPaginationLabel(currentPage, cardsPerPage, totalItems) {
     if (totalItems === 0) return "Showing 0 - 0 of 0 Results";
 
@@ -135,105 +138,126 @@ function getPageNumbers(currentPage, totalPage) {
 }
 
 // TODO START: WRAP THEM INTO ONE (1) FUNCTION THAT ACCEPT FILTERED PRODUCTS, HANDLES PAGINATION STATE, UPDATES BOTH PRODUCT GRID AND PAGINATION UI
-// RENDER A SPECIFIC PAGE OF PRODUCTS
-function renderPage(products, page = 1, cardsPerPage) {
-    cardsPerPage = cardsPerPage || getCardsPerPage(window.innerWidth); // FALLBACK
+function renderPaginatedList({
+    items,
+    page = 1,
+    cardsPerPage = getCardsPerPage(window.innerWidth),
+    containerSelector,
+    paginationSelector,
+    labelSelector,
+    renderItem,
+    getLabel = getPaginationLabel,
+    onPageChange = () => {},
+}) {
+    const container = document.querySelector(containerSelector);
+    const paginationLabel = labelSelector ? document.querySelector(labelSelector) : null;
+    const paginationContainer = document.querySelector(paginationSelector);
 
-    const productContainer = document.querySelector(".product-container");
-    const paginationLabel = document.querySelector(".pagination-label");
-    productContainer.innerHTML = "";
+    if (!container || !paginationContainer) return;
 
-    const totalPage = Math.ceil(products.length / cardsPerPage);
-    const safePage = Math.min(page, totalPage);
-    window.currentPage = safePage;
-
-    const start = (safePage - 1) * cardsPerPage;
-    const end = start + cardsPerPage;
-    const sliceProducts = products.slice(start, end);
-
-    sliceProducts.forEach(product => {
-        const card = createProductCard(product);
-        productContainer.appendChild(card);
-    });
-
-    // INJECT PAGINATION LABEL
-    const label = getPaginationLabel(safePage, cardsPerPage, products.length);
-    paginationLabel.textContent = label;
-
-    renderPaginationControls(products.length, safePage, cardsPerPage)
-}
-// RENDER PAGINATION BUTTONS
-function renderPaginationControls(totalItems, currentPage, cardsPerPage) {
-    const paginationContainer = document.querySelector(".pagination-container");
+    container.innerHTML = "";
     paginationContainer.innerHTML = "";
 
-    const totalPage = Math.ceil(totalItems / cardsPerPage);
-    const source = window.filteredProducts?.length ? window.filteredProducts : window.allProducts;
+    const totalPage = Math.ceil(items.length / cardsPerPage);
+    const safePage = Math.max(1, Math.min(page, totalPage));
+    const start = (safePage - 1) * cardsPerPage;
+    const end = start + cardsPerPage;
+    const slice = items.slice(start, end);
 
-    // PREVIOUS BUTTON
-    const previousBtn = document.createElement("button");
-    previousBtn.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 320 512">
-            <path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
-        </svg>
-    `;
-    previousBtn.className = "btn prev-btn";
-    previousBtn.type = "button";
-    previousBtn.disabled = currentPage === 1;
+    slice.forEach(item => container.appendChild(renderItem(item)));
 
-    previousBtn.addEventListener("click", () => {
-        window.currentPage--;
-        renderPage(source, window.currentPage, cardsPerPage);
+    if (paginationLabel) {
+        paginationLabel.textContent = getLabel(safePage, cardsPerPage, items.length);
+    }
+
+    renderPaginationControls({
+        totalItems: items.length,
+        currentPage: safePage,
+        cardsPerPage,
+        paginationContainer,
+        onPageChange: (newPage) => {
+            renderPaginatedList({
+                items,
+                page: newPage,
+                cardsPerPage,
+                containerSelector,
+                paginationSelector,
+                labelSelector,
+                renderItem,
+                getLabel,
+                onPageChange,
+            });
+            onPageChange(newPage);
+        }
     });
-    paginationContainer.appendChild(previousBtn);
-
+}
+function renderPaginationControls({
+    totalItems,
+    currentPage,
+    cardsPerPage,
+    paginationContainer,
+    onPageChange
+}) {
+    const totalPage = Math.ceil(totalItems / cardsPerPage);
     const viewport = window.innerWidth;
 
-    if (viewport > 639) {
-        // PAGE NUMBER BUTTONS
-        const visiblePages = getPageNumbers(currentPage, totalPage);
-        visiblePages.forEach(page => {
-            const button = document.createElement("button");
-            button.classList = "btn number-btn";
-            button.textContent = page;
+    const createBtn = (label, disabled, onClick, className = "") => {
+        const paginationBtn = document.createElement("button");
+        paginationBtn.className = `btn ${ className }`;
+        paginationBtn.textContent = label;
+        paginationBtn.disabled = disabled;
+        paginationBtn.addEventListener("click", onClick);
+        return paginationBtn;
+    };
 
-            if (page === "...") {
-                button.disabled = true;
-            } else {
-                if (page === currentPage) button.classList.add("active");
-                button.addEventListener("click", () => {
-                    window.currentPage = page;
-                    renderPage(source, page, cardsPerPage)
-                });
-            }
-            paginationContainer.appendChild(button);
+    paginationContainer.appendChild(createBtn("←", currentPage === 1, () => onPageChange(currentPage - 1), "prev-btn"));
+
+    if (viewport >= 576) {
+        getPageNumbers(currentPage, totalPage).forEach(page => {
+            const paginationBtn = createBtn(page, page === "...", () => onPageChange(page), "number-btn");
+            if (page === currentPage) paginationBtn.classList.add("active");
+            paginationContainer.appendChild(paginationBtn);
         });
     }
 
-    // NEXT BUTTON
-    const nextBtn = document.createElement("button");
-    nextBtn.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 320 512">
-            <path fill="currentColor" d="M311.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L243.2 256 73.9 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-        </svg>
-    `;
-    nextBtn.className = "btn next-btn";
-    nextBtn.type = "button";
-    nextBtn.disabled = currentPage === totalPage;
-
-    nextBtn.addEventListener("click", () => {
-        window.currentPage++;
-        renderPage(source, window.currentPage, cardsPerPage);
-    });
-    paginationContainer.appendChild(nextBtn);
+    paginationContainer.appendChild(createBtn("→", currentPage === totalPage, () => onPageChange(currentPage + 1), "next-btn"));
 }
+
+// SHOP PAGE PAGINATION
+renderPaginatedList({
+    items: Array.isArray(window.filteredProducts) && window.filteredProducts.length ? window.filteredProducts : Array.isArray(window.allProducts) ? window.allProducts : [],
+    containerSelector: ".product-container",
+    paginationSelector: ".pagination-container",
+    labelSelector: ".pagination-label",
+    renderItem: createProductCard
+});
 // TODO END
+
+function renderShopPage(source) {
+    renderPaginatedList({
+        items: source,
+        page: window.currentPage || 1,
+        cardsPerPage: getCardsPerPage(window.innerWidth),
+        containerSelector: ".product-container",
+        paginationSelector: ".pagination-container",
+        labelSelector: ".pagination-label",
+        renderItem: createProductCard
+    });
+}
 
 function renderCurrentFilteredPage() {
     const viewport = window.innerWidth;
     const cardsPerPage = getCardsPerPage(viewport);
     const source = window.filteredProducts?.length ? window.filteredProducts : window.allProducts;
-    renderPage(source, window.currentPage, cardsPerPage);
+    renderPaginatedList({
+        items: source,
+        page: window.currentPage,
+        cardsPerPage,
+        containerSelector: ".product-container",
+        paginationSelector: ".pagination-container",
+        labelSelector: ".pagination-label",
+        renderItem: createProductCard
+    });
 }
 
 // INITIALIZE SETUP
@@ -284,7 +308,7 @@ function syncSelectedTypeButton({
 function maybeShowClearAllButton() {
     const selectedBtnsContainer = document.querySelector(".selected-filters");
     const selectedBtns = selectedBtnsContainer.querySelectorAll(".selected-btn");
-    existingClearBtn = document.querySelector("#clear-all-selected-btn");
+    const existingClearBtn = document.querySelector("#clear-all-selected-btn");
 
     if (selectedBtns.length >= 3) {
         if (!existingClearBtn) {
@@ -301,6 +325,7 @@ function maybeShowClearAllButton() {
         }
     } else {
         if (existingClearBtn) existingClearBtn.remove();
+        // console.log("Clear All button exist.");
     }
 }
 
@@ -516,9 +541,7 @@ async function loadAllData(getSelectedProductTypes = []) {
         window.filteredProducts = [];
         window.currentPage = 1;
 
-        const viewport = window.innerWidth;
-        const cardsPerPage = getCardsPerPage(viewport);
-        renderPage(combinedData, window.currentPage, cardsPerPage);
+        renderShopPage(combinedData);
     } catch (error) {
         console.error("Error fetching JSON files:", error);
     }
@@ -631,21 +654,35 @@ function slideMax() {
     setArea();
 }
 function setMinInput() {
-    let minPrice = parseFloat(priceInputMin.value);
+    let rawMinPrice = priceInputMin.value
+    let minPrice = parseFloat(rawMinPrice);
+
+    if (!rawMinPrice || isNaN(minPrice)) {
+        minPrice = sliderMinValue; // FALLBACK TO MIN
+        priceInputMin.value = minPrice
+    }
+
     if (minPrice < sliderMinValue) {
         priceInputMin.value = sliderMinValue;
     }
 
-    minValue.value = priceInputMin.value;
+    minValue.value = minPrice;
     slideMin();
 }
 function setMaxInput() {
-    let maxPrice = parseFloat(priceInputMax.value);
+    let rawMaxPrice = priceInputMax.value
+    let maxPrice = parseFloat(rawMaxPrice);
+
+    if (!rawMaxPrice || isNaN(maxPrice)) {
+        maxPrice = sliderMaxValue; // FALLBACK TO MAX
+        priceInputMax.value = maxPrice;
+    }
+
     if (maxPrice > sliderMaxValue) {
         priceInputMax.value = sliderMaxValue;
     }
 
-    maxValue.value = priceInputMax.value;
+    maxValue.value = maxPrice;
     slideMax();
 }
 function setArea() {
@@ -679,7 +716,7 @@ function setArea() {
     // FILTER AND RENDER PAGE 1
     window.filteredProducts = filtered;
     window.currentPage = 1;
-    renderPage(window.filteredProducts, window.currentPage);
+    renderShopPage(window.filteredProducts);
     // console.log("Filtered Products:", window.filteredProducts.map(p => `${p.name} - ₱${p.price}`));
     // console.log(`Excluded products: ${window.allProducts.length - window.filteredProducts.length}`);
 
@@ -755,31 +792,3 @@ function createSelectedFilterButtons({ text = "", className = "btn", id = "", on
 
     return selectedFilterBtn;
 }
-
-window.onload = () => {
-    // DISABLE THE FILTER BY BRAND CHECKBOXES
-    disableBrandCheckboxes();
-
-    // ENSURE THE PAGINATION SYSTEM IS STABLE
-    resetPaginationState()
-    //  KICK OFF THE DATA LOADING
-    loadAllData();
-
-    // SLIDER FOR FILTER PRICE RANGE
-    slideMin();
-    slideMax();
-
-    // PRODUCT TYPE CHECKBOXES
-    setupProductTypeCheckboxes();
-    // PRODUCT BRAND CHECKBOXES
-    setupProductBrandCheckboxes();
-    // MODEL TYPE CHECKBOXES
-    setupModelTypeCheckboxes();
-
-    // STATIC PRODUCT COUNTER
-    loadStaticCounters();
-}
-
-window.addEventListener("resize", () => {
-    renderCurrentFilteredPage();
-});

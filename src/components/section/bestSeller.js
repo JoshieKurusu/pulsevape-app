@@ -1,3 +1,6 @@
+
+import { createProductCard } from "./productCard.js";
+
 class bestSellers extends HTMLElement {
     constructor() {
         super();
@@ -67,24 +70,10 @@ class bestSellers extends HTMLElement {
 
         bestSellerCardsContainer.innerHTML = "";
 
-        bestSellersToRender.forEach(bestSeller => {
-            bestSellerCardsContainer.appendChild(this.createBestSellerCard(bestSeller));
+        bestSellersToRender.forEach(product => {
+            const productCard = createProductCard(product);
+            bestSellerCardsContainer.appendChild(productCard);
         });
-    }
-
-    createBestSellerCard(bestSeller) {
-        const bestSellerCard = document.createElement("div");
-        bestSellerCard.className = "card";
-        bestSellerCard.id = `${ bestSeller.id }`;
-        bestSellerCard.innerHTML = `
-            <img src="${ bestSeller.image }" alt="${ bestSeller.imageAlt }" loading="lazy" />
-            <div class="card-body">
-                <h6 class="product-name">${ bestSeller.name }</h6>
-                <p class="product-description">${ bestSeller.description }</p>
-                <h6 class="product-price">₱${ bestSeller.price }.00</h6>
-            </div>
-        `;
-        return bestSellerCard;
     }
 }
 customElements.define("best-sellers", bestSellers);

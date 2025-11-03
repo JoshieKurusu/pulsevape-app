@@ -13,8 +13,12 @@
 }
 @mixin flexbox($align: center, $justify: center) {
     display: flex;
-    align-items: $align;
-    justify-content: $justify;
+    @if $align != null {
+        align-items: $align;
+    }
+    @if $justify != null {
+        justify-content: $justify;
+    }
 }
 @mixin image-cover {
     width: 100%;
@@ -225,13 +229,13 @@
         position: absolute;
         inset: 0;
         z-index: -1;
-        background-color: #3F51B5;
+        background-color: #02665E;
         @include transform(translateX(-100%));
         @include transition(transform 0.5s ease-in-out);
     }
     &:hover {
         color: #FFF;
-        border-color: #3F51B5;
+        border-color: #02665E;
         @include transition(0.5s ease-in-out);
         &::before {
             @include transform(translateX(0));
@@ -242,7 +246,7 @@
     flex-wrap: wrap;
     gap: 16px 12px;
     width: 100%;
-    @include flexbox(center, none);
+    @include flexbox(center, null);
     .card {
         width: 47.78%;
         padding: 8px;
@@ -345,6 +349,100 @@
     //     }
     // }
 }
+@mixin pagination-btns {
+    .prev-btn, .next-btn {
+        width: fit-content !important;
+        background-color: #02665E !important;
+    }
+    .number-btn {
+        @include pagination-number-btn();
+    }
+    .btn {
+        width: 36px;
+        height: 36px;
+        color: #FFF;
+        border: none;
+        background: #000;
+        font-weight: 700;
+        font-size: clamp(0.875rem, 0vw + 0.875rem, 0.875rem);
+        line-height: clamp(1.05rem, 0vw + 1.05rem, 1.05rem);
+        @include font-family-heading();
+        @include transition(background-color 0.6s ease-in);
+        &:hover {
+            background-color: #02665E;
+        }
+    }
+    .active {
+        background: #02665E;
+    }
+}
+@mixin pagination-number-btn {
+    display: none;
+    @media (min-width: 576px) {
+        display: block;
+    }
+}
+@mixin search-field {
+    width: 100%;
+    margin-bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #FFF;
+    @include border-radius(4px);
+    .form-group .form-control, .search-btn {
+        padding: 9px 12px;
+        color: #8f8f8f;
+        &::placeholder {
+            color: #8f8f8f;
+        }
+    }
+    .form-group {
+        width: 100%;
+        height: 42px;
+        .form-control {
+            height: 100%;
+            background: none;
+            border: none;
+            @include border-radius(0);
+            @include filter-offcanvas-typography();
+            &:focus {
+                box-shadow: none;
+            }
+            &::-webkit-search-cancel-button {
+                display: none;
+                appearance: none;
+                -webkit-appearance: none;
+            }
+        }
+    }
+    .search-btn {
+        border: none;
+        outline: none;
+        box-shadow: none;
+        svg {
+            margin-top: -5px;
+        }
+    }
+}
+@mixin accordion-header-btns {
+    width: 100%;
+    padding: 16px 0;
+    border: none;
+    color: #FFF;
+    font-size: clamp(0.875rem, 0.446vw + 0.786rem, 1rem);
+    line-height: clamp(1.05rem, 0.536vw + 0.943rem, 1.2rem);
+    @include font-family-subheading();
+    @include flexbox(center, space-between);
+    .icon-toggle .minus {
+        display: none;
+    }
+    &:not(.collapsed) .plus {
+        display: none;
+    }
+    &:not(.collapsed) .minus {
+        display: block;
+    }
+}
 body {
     background: fixed url("../assets/images/whole-page-background.jpg") no-repeat;
     scroll-behavior: smooth;
@@ -436,7 +534,7 @@ footer {
         @include container-max-width();
         .footer-top {
             flex-direction: column;
-            @include flexbox(none, center);
+            @include flexbox(null, center);
             .footer-top-column-1 {
                 .footer-branding {
                     margin-bottom: 40px;
@@ -551,7 +649,7 @@ main {
                     line-height: clamp(2.4rem, 3.765vw + 1.647rem, 3rem);
                     @include font-family-heading();
                     .change-color {
-                        background: linear-gradient(94deg, #00B8A9 8%, #3F51B5 56%);
+                        background: linear-gradient(94deg, #00B8A9 8%, #02665E 56%);
                         background-clip: text;
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
@@ -586,7 +684,7 @@ main {
                 padding: 40px 0;
                 flex-wrap: wrap;
                 border: none;
-                background: linear-gradient(42deg,#02665E 6%, #344291 34%, #19204A 64%);
+                background: linear-gradient(16deg, #00B8A9 0%, #02665E  38%, #025C54 74%);
                 @include flexbox();
                 @include banner-max-width();
                 .banner-1-content {
@@ -716,7 +814,7 @@ main {
                             @include transform(scale(1.05));
                         }
                         .category-card-title h6, .type-of-mod-card-title h3 {
-                            color: #99a6f5;
+                            color: #02665E;
                         }
                     }
                 }
@@ -786,7 +884,7 @@ main {
             padding: 40px 0;
             width: 100%;
             overflow: hidden;
-            @include flexbox(none, none);
+            @include flexbox(null);
             .brand-logo-content {
                 column-gap: 24px;
                 will-change: transform;
@@ -795,11 +893,13 @@ main {
                     width: clamp(178px, calc(178px + 24 * ((100vw - 320px) / 448)), 202px);
                     height: clamp(66px, calc(68px + 10 * ((100vw - 320px) / 448)), 78px);
                     overflow: hidden;
+                    border: none;
                     // background-color: #141516;
                     background-color: transparent;
                     img {
                         display: block;
                         height: 100%;
+                        overflow: hidden;
                         @include image-cover();
                     }
                 }
@@ -814,7 +914,7 @@ main {
         .container-fluid {
             @include container-max-width();
             @include responsive-padding();
-            .card {
+            .filter-bar {
                 margin: 0;
                 padding: 12px 16px;
                 background-color: #000;
@@ -823,10 +923,10 @@ main {
                     flex-direction: column;
                     row-gap: 12px;
                     color: #FFF;
-                    @include flexbox(none, none);
+                    @include flexbox(null);
                     .listing, .filters {
                         column-gap: 12px;
-                        @include flexbox(center, none);
+                        @include flexbox(center, null);
                         .pagination-label, .sort-label {
                             margin: 0;
                             @include filter-offcanvas-typography();
@@ -876,7 +976,7 @@ main {
                     .selected-filters {
                         flex-wrap: wrap;
                         gap: 8px;
-                        @include flexbox(center, none);
+                        @include flexbox(center, null);
                         .selected-filters-label {
                             display: inline-flex;
                             align-items: center;
@@ -888,7 +988,7 @@ main {
                         .selected-btns {
                             flex-wrap: wrap;
                             gap: 8px;
-                            @include flexbox(center, none);
+                            @include flexbox(center, null);
                             .btn {
                                 pointer-events: none;
                                 @include filter-btns();
@@ -920,28 +1020,7 @@ main {
             .pagination-container {
                 column-gap: 12px;
                 @include flexbox();
-                .prev-btn, .next-btn {
-                    width: fit-content !important;
-                    background-color: #02665E !important;
-                }
-                .btn {
-                    width: 36px;
-                    height: 36px;
-                    color: #FFF;
-                    border: none;
-                    background: #000;
-                    font-weight: 700;
-                    font-size: clamp(0.875rem, 0vw + 0.875rem, 0.875rem);
-                    line-height: clamp(1.05rem, 0vw + 1.05rem, 1.05rem);
-                    @include font-family-heading();
-                    @include transition(background-color 0.6s ease-in);
-                    &:hover {
-                        background-color: #02665E;
-                    }
-                }
-                .active {
-                    background: #02665E;
-                }
+                @include pagination-btns();
             }
         }
         .offcanvas {
@@ -957,60 +1036,10 @@ main {
                     border-bottom: 1px solid #FFF;
                     @include border-radius(0px);
                     .search-form-group {
-                        width: 100%;
-                        margin-bottom: 16px;
-                        display: inline-flex;
-                        align-items: center;
-                        border: 1px solid #FFF;
-                        @include border-radius(4px);
-                        .form-group .form-control, .search-btn {
-                            padding: 9px 12px;
-                            color: #8f8f8f;
-                            &::placeholder {
-                                color: #8f8f8f;
-                            }
-                        }
-                        .form-group .form-control {
-                            background: none;
-                            border: none;
-                            @include border-radius(0);
-                            @include filter-offcanvas-typography();
-                            &:focus {
-                                box-shadow: none;
-                            }
-                            &::-webkit-search-cancel-button {
-                                display: none;
-                                appearance: none;
-                                -webkit-appearance: none;
-                            }
-                        }
-                        .search-btn {
-                            border: none;
-                            outline: none;
-                            box-shadow: none;
-                            svg {
-                                margin-top: -5px;
-                            }
-                        }
+                        @include search-field();
                     }
                     .accordion-header :where(button) {
-                        width: 100%;
-                        padding: 16px 0;
-                        border: none;
-                        color: #FFF;
-                        font-size: clamp(0.875rem, 0.446vw + 0.786rem, 1rem);
-                        line-height: clamp(1.05rem, 0.536vw + 0.943rem, 1.2rem);
-                        @include font-family-subheading();
-                        @include flexbox(center, space-between);
-                        .icon-toggle .minus {
-                            display: none;
-                        }
-                        &:not(.collapsed) .plus {
-                            display: none;
-                        }
-                        &:not(.collapsed) .minus {
-                            display: block;
-                        }
+                        @include accordion-header-btns();
                     }
                     .accordion-collapse {
                         margin: 4px 0 20px;
@@ -1043,7 +1072,7 @@ main {
                                             border-color: #FFF;
                                         }
                                         &::placeholder {
-                                            color: #FFF;
+                                            color: #8f8f8f;
                                         }
                                     }
                                 }
@@ -1099,7 +1128,7 @@ main {
                                 row-gap: 6px;
                                 flex-direction: column;
                                 @include reset-spacing();
-                                @include flexbox(none, none);
+                                @include flexbox(null);
                                 .product-type-item {
                                     @include flexbox(center, space-between);
                                     .form-check {
@@ -1170,7 +1199,14 @@ main {
         background: url("../assets/images/banner-background-2.jpg") center / cover no-repeat;
         @include page-header-banner();
     }
-    //* CSS FOR THE BLOG PAGE CONTENTS
+    .blog-post-section {
+        .container-fluid {
+            @include container-max-width();
+            .blog-post-sidebar {
+                display: none;
+            }
+        }
+    }
     .about-us-hero-section {
         .container-fluid {
             flex-direction: column;
@@ -1217,7 +1253,7 @@ main {
         .container-fluid {
             gap: 48px 0;
             flex-direction: column;
-            @include flexbox(none, none);
+            @include flexbox(null);
             @include container-max-width();
             @include responsive-padding();
             .contact-area-content {
@@ -1328,7 +1364,7 @@ main {
             }
         }
         .product-section .container-fluid {
-            .card .top-filter-bar {
+            .filter-bar .top-filter-bar {
                 row-gap: 0;
                 flex-direction: row;
                 justify-content: space-between;
@@ -1573,6 +1609,104 @@ main {
                 width: 398px;
                 font-size: clamp(0.875rem, 0vw + 0.875rem, 0.875rem);
                 line-height: clamp(1.138rem, 0vw + 1.138rem, 1.138rem);
+            }
+        }
+        .blog-post-section .container-fluid {
+            .blog-post-sidebar {
+                display: block;
+                width: clamp(222px, calc(222px + 4 * ((100vw - 992px) / 32)), 226px);
+                .accordion {
+                    background: #000;
+                    padding: 16px;
+                    .accordion-item {
+                        background: none;
+                        border: none;
+                        border-bottom: 1px solid #FFF;
+                        @include border-radius(0px);
+                        .search-form-group {
+                            @include search-field();
+                        }
+                        .accordion-header :where(button) {
+                            @include accordion-header-btns();
+                        }
+                        .accordion-collapse {
+                            .accordion-body {
+                                padding: 0;
+                                color: #FFF;
+                                .blog-categories .blog-categories-item, .recent-posts-container .card .card-body .blog-title {
+                                    font-size: clamp(0.875rem, 0vw + 0.875rem, 0.875rem);
+                                    line-height: clamp(1.138rem, 0vw + 1.138rem, 1.138rem);
+                                    @include font-family-subheading();
+                                }
+                                .blog-categories {
+                                    margin-bottom: 32px;
+                                    .blog-categories-item {
+                                        margin-bottom: 6px;
+                                        font-weight: 400;
+                                        cursor: default;
+                                        &:last-child {
+                                            margin-bottom: 0;
+                                        }
+                                    }
+                                }
+                                .recent-posts-container {
+                                    row-gap: 12px;
+                                    flex-direction: column;
+                                    @include flexbox(center, null);
+                                    .card {
+                                        height: 60px;
+                                        border: none;
+                                        overflow: hidden;
+                                        background: none;
+                                        cursor: pointer;
+                                        column-gap: 6px;
+                                        flex-direction: row;
+                                        @include flexbox(center, center);
+                                        @include border-radius(0);
+                                        img {
+                                            width: 60px;
+                                            height: 100%;
+                                            object-fit: cover;
+                                            display: block;
+                                        }
+                                        .card-body {
+                                            padding: 0;
+                                            .blog-date-details .date, .blog-title {
+                                                font-weight: 400;
+                                            }
+                                            .blog-date-details {
+                                                margin-bottom: 4px;
+                                                color: #8f8f8f;
+                                                svg {
+                                                    margin-left: -2px;
+                                                }
+                                                .date {
+                                                    font-size: clamp(0.75rem, 0vw + 0.75rem, 0.75rem);
+                                                    line-height: clamp(0.975rem, 0vw + 0.975rem, 0.975rem);
+                                                    @include font-family-subheading();
+                                                }
+                                            }
+                                            .blog-title {
+                                                margin: 0;
+                                                color: #FFF;
+                                                @include transition(color 0.5s ease-in);
+                                            }
+                                        }
+                                        &:hover {
+                                            .card-body .blog-title {
+                                                color: #00B8A9;
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &:last-child {
+                            border-bottom: none;
+                        }
+                    }
+                }
             }
         }
         .contact-area-section .container-fluid .contact-area-content .card .card-body .address {
