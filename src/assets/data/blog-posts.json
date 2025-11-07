@@ -1,0 +1,102 @@
+[
+    {
+        "id": "blog001",
+        "postDate": "Sept 20, 2025",
+        "postTitle": "Vape Edge",
+        "postDescription": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted with premium materials, it's perfect for both beginners and seasoned vapers. Elevate your vaping journey today.",
+        "postImage": "src/assets/images/sample-blog-post-img.jpg",
+        "postImageAlt": "",
+        "postContent": "Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet. <br> Massa pellentesque placerat vel cursus commodo nunc sit dictum ornare. Nam neque sed scelerisque urna. Nisi et eu nunc magna id. Viverra dignissim id mattis dolor tincidunt lacus. Phasellus cras tincidunt curabitur augue id vel. <br> Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet.",
+        "postTags": [ "Vape Mod, Vape Juice, Smoking, Vaping, E-Cigg, Alternate, Tasty, Flavours, Disspossable" ]
+    },
+    {
+        "id": "blog002",
+        "postDate": "Sept 20, 2025",
+        "postTitle": "Aero Core",
+        "postDescription": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted with premium materials, it's perfect for both beginners and seasoned vapers. Elevate your vaping journey today.",
+        "postImage": "src/assets/images/sample-blog-post-img.jpg",
+        "postImageAlt": "",
+        "postContent": "Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet. <br> Massa pellentesque placerat vel cursus commodo nunc sit dictum ornare. Nam neque sed scelerisque urna. Nisi et eu nunc magna id. Viverra dignissim id mattis dolor tincidunt lacus. Phasellus cras tincidunt curabitur augue id vel. <br> Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet.",
+        "postTags": [ "Vape Mod, Vape Juice, Smoking, Vaping, E-Cigg, Alternate, Tasty, Flavours, Disspossable" ]
+    },
+    {
+        "id": "blog003",
+        "postDate": "Sept 20, 2025",
+        "postTitle": "Nova Vape",
+        "postDescription": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted with premium materials, it's perfect for both beginners and seasoned vapers. Elevate your vaping journey today.",
+        "postImage": "src/assets/images/sample-blog-post-img.jpg",
+        "postImageAlt": "",
+        "postContent": "Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet. <br> Massa pellentesque placerat vel cursus commodo nunc sit dictum ornare. Nam neque sed scelerisque urna. Nisi et eu nunc magna id. Viverra dignissim id mattis dolor tincidunt lacus. Phasellus cras tincidunt curabitur augue id vel. <br> Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet.",
+        "postTags": [ "Vape Mod, Vape Juice, Smoking, Vaping, E-Cigg, Alternate, Tasty, Flavours, Disspossable" ]
+    },
+    {
+        "id": "blog004",
+        "postDate": "Sept 20, 2025",
+        "postTitle": "Cloud Max",
+        "postDescription": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted with premium materials, it's perfect for both beginners and seasoned vapers. Elevate your vaping journey today.",
+        "postImage": "src/assets/images/sample-blog-post-img.jpg",
+        "postImageAlt": "",
+        "postContent": "Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet. <br> Massa pellentesque placerat vel cursus commodo nunc sit dictum ornare. Nam neque sed scelerisque urna. Nisi et eu nunc magna id. Viverra dignissim id mattis dolor tincidunt lacus. Phasellus cras tincidunt curabitur augue id vel. <br> Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet.",
+        "postTags": [ "Vape Mod, Vape Juice, Smoking, Vaping, E-Cigg, Alternate, Tasty, Flavours, Disspossable" ]
+    },
+    {
+        "id": "blog005",
+        "postDate": "Sept 20, 2025",
+        "postTitle": "Vapor Tech",
+        "postDescription": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted with premium materials, it's perfect for both beginners and seasoned vapers. Elevate your vaping journey today.",
+        "postImage": "src/assets/images/sample-blog-post-img.jpg",
+        "postImageAlt": "",
+        "postContent": "Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet. <br> Massa pellentesque placerat vel cursus commodo nunc sit dictum ornare. Nam neque sed scelerisque urna. Nisi et eu nunc magna id. Viverra dignissim id mattis dolor tincidunt lacus. Phasellus cras tincidunt curabitur augue id vel. <br> Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet.",
+        "postTags": [ "Vape Mod, Vape Juice, Smoking, Vaping, E-Cigg, Alternate, Tasty, Flavours, Disspossable" ]
+    },
+    {
+        "id": "blog006",
+        "postDate": "Sept 20, 2025",
+        "postTitle": "Koko Prime",
+        "postDescription": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted with premium materials, it's perfect for both beginners and seasoned vapers. Elevate your vaping journey today.",
+        "postImage": "src/assets/images/sample-blog-post-img.jpg",
+        "postImageAlt": "",
+        "postContent": "Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet. <br> Massa pellentesque placerat vel cursus commodo nunc sit dictum ornare. Nam neque sed scelerisque urna. Nisi et eu nunc magna id. Viverra dignissim id mattis dolor tincidunt lacus. Phasellus cras tincidunt curabitur augue id vel. <br> Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet.",
+        "postTags": [ "Vape Mod, Vape Juice, Smoking, Vaping, E-Cigg, Alternate, Tasty, Flavours, Disspossable" ]
+    },
+    {
+        "id": "blog007",
+        "postDate": "Oct 10, 2025",
+        "postTitle": "A title for vape blog.",
+        "postDescription": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted with premium materials, it's perfect for both beginners and seasoned vapers. Elevate your vaping journey today.",
+        "postImage": "src/assets/images/sample-blog-post-img.jpg",
+        "postImageAlt": "",
+        "postContent": "Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet. <br> Massa pellentesque placerat vel cursus commodo nunc sit dictum ornare. Nam neque sed scelerisque urna. Nisi et eu nunc magna id. Viverra dignissim id mattis dolor tincidunt lacus. Phasellus cras tincidunt curabitur augue id vel. <br> Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet.",
+        "postTags": [ "Vape Mod, Vape Juice, Smoking, Vaping, E-Cigg, Alternate, Tasty, Flavours, Disspossable" ]
+    },
+    {
+        "id": "blog008",
+        "postDate": "Oct 10, 2025",
+        "postTitle": "A title for vape blog.",
+        "postDescription": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted with premium materials, it's perfect for both beginners and seasoned vapers. Elevate your vaping journey today.",
+        "postImage": "src/assets/images/sample-blog-post-img.jpg",
+        "postImageAlt": "",
+        "postContent": "Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet. <br> Massa pellentesque placerat vel cursus commodo nunc sit dictum ornare. Nam neque sed scelerisque urna. Nisi et eu nunc magna id. Viverra dignissim id mattis dolor tincidunt lacus. Phasellus cras tincidunt curabitur augue id vel. <br> Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet.",
+        "postTags": [ "Vape Mod, Vape Juice, Smoking, Vaping, E-Cigg, Alternate, Tasty, Flavours, Disspossable" ]
+    },
+    {
+        "id": "blog009",
+        "postDate": "Oct 10, 2025",
+        "postTitle": "A title for vape blog.",
+        "postDescription": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted with premium materials, it's perfect for both beginners and seasoned vapers. Elevate your vaping journey today.",
+        "postImage": "src/assets/images/sample-blog-post-img.jpg",
+        "postImageAlt": "",
+        "postContent": "Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet. <br> Massa pellentesque placerat vel cursus commodo nunc sit dictum ornare. Nam neque sed scelerisque urna. Nisi et eu nunc magna id. Viverra dignissim id mattis dolor tincidunt lacus. Phasellus cras tincidunt curabitur augue id vel. <br> Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet.",
+        "postTags": [ "Vape Mod, Vape Juice, Smoking, Vaping, E-Cigg, Alternate, Tasty, Flavours, Disspossable" ]
+    },
+    {
+        "id": "blog010",
+        "postDate": "Oct 10, 2025",
+        "postTitle": "A title for vape blog.",
+        "postDescription": "Experience unparalleled flavor and smooth clouds with Elite Vapor. Crafted with premium materials, it's perfect for both beginners and seasoned vapers. Elevate your vaping journey today.",
+        "postImage": "src/assets/images/sample-blog-post-img.jpg",
+        "postImageAlt": "",
+        "postContent": "Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet. <br> Massa pellentesque placerat vel cursus commodo nunc sit dictum ornare. Nam neque sed scelerisque urna. Nisi et eu nunc magna id. Viverra dignissim id mattis dolor tincidunt lacus. Phasellus cras tincidunt curabitur augue id vel. <br> Lorem ipsum dolor sit amet consectetur. Varius vel facilisis tristique porttitor phasellus nibh. Id tempor ullamcorper quisque felis eget enim nunc vel. Ullamcorper est nec amet ipsum. Lobortis lacus ut massa euismod morbi non. Interdum est rutrum risus sit sem id. Aliquet sed pharetra purus semper amet.",
+        "postTags": [ "Vape Mod, Vape Juice, Smoking, Vaping, E-Cigg, Alternate, Tasty, Flavours, Disspossable" ]
+    }
+]
