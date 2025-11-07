@@ -242,10 +242,17 @@
         }
     }
 }
+@mixin description-truncate {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+}
 @mixin product-cards {
-    flex-wrap: wrap;
-    gap: 16px 12px;
     width: 100%;
+    gap: 16px 12px;
+    flex-wrap: wrap;
     @include flexbox(center, null);
     .card {
         width: 47.78%;
@@ -274,16 +281,12 @@
             }
             .product-description {
                 margin-bottom: 20px;
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                line-clamp: 2;
-                -webkit-line-clamp: 2;
                 color: #8f8f8f;
                 font-weight: 400;
                 font-size: clamp(0.688rem, 1.176vw + 0.452rem, 0.875rem);
                 line-height: clamp(0.894rem, 1.529vw + 0.588rem, 1.138rem);
                 @include font-family-subheading();
+                @include description-truncate();
             }
             .product-price {
                 color: #FAFAFA;
@@ -348,6 +351,10 @@
     //         width: 23.35%;
     //     }
     // }
+}
+@mixin pagination-container {
+    column-gap: 12px;
+    @include flexbox();
 }
 @mixin pagination-btns {
     .prev-btn, .next-btn {
@@ -849,9 +856,9 @@ main {
             @include container-max-width();
             @include responsive-padding();
             .banner-content {
+                height: 250px;
                 position: relative;
                 overflow: hidden;
-                height: 250px;
                 @include banner-max-width();
                 @include border-radius(6px);
                 &::before {
@@ -1018,8 +1025,7 @@ main {
                 @include product-cards();
             }
             .pagination-container {
-                column-gap: 12px;
-                @include flexbox();
+                @include pagination-container();
                 @include pagination-btns();
             }
         }
@@ -1202,8 +1208,86 @@ main {
     .blog-post-section {
         .container-fluid {
             @include container-max-width();
+            @include responsive-padding();
             .blog-post-sidebar {
                 display: none;
+            }
+            .blog-post-content {
+                .post-container {
+                    width: 100;
+                    gap: 24px 0;
+                    flex-wrap: wrap;
+                    @include flexbox(center, null);
+                    .post-card {
+                        // width: clamp(222px, calc(222px + 108 * ((100vw - 992px) / 32)), 330px);
+                        padding: 8px;
+                        border: none;
+                        background-color: #000;
+                        @include border-radius(10px);
+                        .img-block {
+                            height: auto;
+                            margin-bottom: 8px;
+                            position: relative;
+                            overflow: hidden;
+                            img {
+                                display: block;
+                                @include image-cover();
+                                @include transition(transform 0.6s linear, opacity 0.6s linear);
+                            }
+                        }
+                        .card-body {
+                            padding: 0;
+                            .title-date-container .blog-date-details, .minimum-time, .blog-description {
+                                color: #8f8f8f;
+                                @include font-family-subheading();
+                            }
+                            .title-date-container .blog-title, .blog-description {
+                                margin: 0;
+                            }
+                            .title-date-container .blog-date-details .date, .blog-description {
+                                font-weight: 400;
+                                font-size: clamp(0.688rem, 1.176vw + 0.452rem, 0.875rem);
+                                line-height: clamp(0.894rem, 1.529vw + 0.588rem, 1.138rem);
+                            }
+                            .title-date-container {
+                                margin-bottom: 4px;
+                                row-gap: 2px;
+                                @include flexbox(center, space-between);
+                                .blog-title {
+                                    color: #FFF;
+                                    cursor: pointer;
+                                    letter-spacing: 0.07px;
+                                    font-size: clamp(0.875rem, 1.569vw + 0.561rem, 1.125rem);
+                                    line-height: clamp(1.05rem, 1.882vw + 0.674rem, 1.35rem);
+                                    @include font-family-heading();
+                                    @include transition(color 0.5s ease-in);
+                                }
+                            }
+                            .minimum-time {
+                                margin-bottom: 4px;
+                                font-weight: 400;
+                                font-size: clamp(0.5rem, 0.784vw + 0.343rem, 0.625rem);
+                                line-height: clamp(0.65rem, 1.02vw + 0.446rem, 0.813rem);
+                            }
+                            .blog-description {
+                                @include description-truncate();
+                            }
+                        }
+                        &:hover {
+                            .img-block img {
+                                @include transform(scale(1.05));
+                            }
+                            .card-body .blog-title {
+                                color: #02665E;
+                            }
+                        }
+                    }
+                }
+                .pagination-container {
+                    margin-top: 24px;
+                    @include pagination-container();
+                    @include pagination-btns();
+                }
             }
         }
     }
@@ -1374,6 +1458,37 @@ main {
             }
 
         }
+        .blog-post-section .container-fluid .blog-post-content {
+            .post-container {
+                gap: 24px;
+                @include flexbox(center, center);
+                .post-card {
+                    flex: 0 0 auto;
+                    width: 47.78%;
+                    padding: 16px;
+                    .img-block {
+                        margin-bottom: 16px;
+                    }
+                    .card-body {
+                        .title-date-container .blog-date-details .date, .blog-description {
+                            font-size: clamp(0.813rem, 0.524vw + 0.624rem, 0.875rem);
+                            line-height: clamp(1.056rem, 0.681vw + 0.811rem, 1.138rem);
+                        }
+                        .title-date-container .blog-title {
+                            font-size: clamp(0.938rem, 2.094vw + 0.184rem, 1.188rem);
+                            line-height: clamp(1.125rem, 2.513vw + 0.22rem, 1.425rem);
+                        }
+                        .minimum-time {
+                            font-size: clamp(0.563rem, 1.047vw + 0.186rem, 0.688rem);
+                            line-height: clamp(0.731rem, 1.361vw + 0.241rem, 0.894rem);
+                        }
+                    }
+                }
+            }
+            .pagination-container {
+                margin-top: 34px;
+            }
+        }
         .about-us-hero-section .container-fluid .hero-content {
             .hero-subheading {
                 font-size: clamp(0.938rem, 2.094vw + 0.184rem, 1.188rem);
@@ -1541,6 +1656,33 @@ main {
                 row-gap: 12px;
             }
         }
+        .blog-post-section .container-fluid .blog-post-content .post-container {
+            justify-content: start;
+            .post-card {
+                width: clamp(228.16px, calc(228.16px + 75.26 * ((100vw - 768px) / 223)), 303.42px);
+                .card-body {
+                    .title-date-container .blog-date-details .date, .blog-description {
+                        font-size: clamp(0.813rem, 1.345vw + 0.167rem, 1rem);
+                        line-height: clamp(1.056rem, 1.749vw + 0.217rem, 1.3rem);
+                    }
+                    .title-date-container, .minimum-time {
+                        margin-bottom: 8px;
+                    }
+                    .title-date-container {
+                        align-items: start;
+                        flex-direction: column;
+                        .blog-title {
+                            font-size: clamp(1rem, 1.794vw + 0.139rem, 1.25rem);
+                            line-height: clamp(1.2rem, 2.152vw + 0.167rem, 1.5rem);
+                        }
+                    }
+                    .minimum-time {
+                        font-size: clamp(0.563rem, 0vw + 0.563rem, 0.563rem);
+                        line-height: clamp(0.731rem, 0vw + 0.731rem, 0.731rem);
+                    }
+                }
+            }
+        }
         .about-us-hero-section .container-fluid {
             justify-content: space-between;
             flex-direction: row;
@@ -1596,25 +1738,12 @@ main {
                 }
             }
         }
-        .about-us-hero-section .container-fluid .hero-content {
-            .hero-subheading {
-                font-size: clamp(1rem, 0vw + 1rem, 1rem);
-                line-height: clamp(1.2rem, 0vw + 1.2rem, 1.2rem);
-            }
-            .hero-heading {
-                font-size: clamp(2.75rem, 0vw + 2.75rem, 2.75rem);
-                line-height: clamp(3.3rem, 0vw + 3.3rem, 3.3rem);
-            }
-            .hero-paragraph {
-                width: 398px;
-                font-size: clamp(0.875rem, 0vw + 0.875rem, 0.875rem);
-                line-height: clamp(1.138rem, 0vw + 1.138rem, 1.138rem);
-            }
-        }
         .blog-post-section .container-fluid {
+            column-gap: 24px;
+            @include flexbox(null, null);
             .blog-post-sidebar {
                 display: block;
-                width: clamp(222px, calc(222px + 4 * ((100vw - 992px) / 32)), 226px);
+                flex: 0 0 clamp(222px, calc(222px + 4 * ((100vw - 992px) / 32)), 226px);
                 .accordion {
                     background: #000;
                     padding: 16px;
@@ -1633,7 +1762,7 @@ main {
                             .accordion-body {
                                 padding: 0;
                                 color: #FFF;
-                                .blog-categories .blog-categories-item, .recent-posts-container .card .card-body .blog-title {
+                                .blog-categories .blog-categories-item, .recent-posts-container .recent-post-card .card-body .blog-title {
                                     font-size: clamp(0.875rem, 0vw + 0.875rem, 0.875rem);
                                     line-height: clamp(1.138rem, 0vw + 1.138rem, 1.138rem);
                                     @include font-family-subheading();
@@ -1707,6 +1836,36 @@ main {
                         }
                     }
                 }
+            }
+            .blog-post-content {
+                .post-container .post-card {
+                    width: clamp(222px, calc(222px + 9 * ((100vw - 992px) / 32)), 231px);
+                    .card-body {
+                        .title-date-container .blog-date-details .date, .blog-description {
+                            font-size: clamp(0.875rem, 0vw + 0.875rem, 0.875rem);
+                            line-height: clamp(1.138rem, 0vw + 1.138rem, 1.138rem);
+                        }
+                        .title-date-container .blog-title {
+                            font-size: clamp(0.938rem, 0vw + 0.938rem, 0.938rem);
+                            line-height: clamp(1.125rem, 0vw + 1.125rem, 1.125rem);
+                        }
+                    }
+                }
+            }
+        }
+        .about-us-hero-section .container-fluid .hero-content {
+            .hero-subheading {
+                font-size: clamp(1rem, 0vw + 1rem, 1rem);
+                line-height: clamp(1.2rem, 0vw + 1.2rem, 1.2rem);
+            }
+            .hero-heading {
+                font-size: clamp(2.75rem, 0vw + 2.75rem, 2.75rem);
+                line-height: clamp(3.3rem, 0vw + 3.3rem, 3.3rem);
+            }
+            .hero-paragraph {
+                width: 398px;
+                font-size: clamp(0.875rem, 0vw + 0.875rem, 0.875rem);
+                line-height: clamp(1.138rem, 0vw + 1.138rem, 1.138rem);
             }
         }
         .contact-area-section .container-fluid .contact-area-content .card .card-body .address {

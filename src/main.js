@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
         { selector: "#category-section", module: "./components/section/productCategories.js"},
         { selector: "#best-seller-section", module: "./components/section/bestSeller.js"},
         { selector: "#brand-logo-section", module: "./components/section/brandsLogo.js"},
-        { selector: "#banner-section", module: "./components/section/banner.js"}
+        { selector: "#banner-section", module: "./components/section/banner.js"},
+        { selector: "#blog-post-sidebar", module: "./components/section/blogSidebar.js"}
     ];
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -30,6 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (element) observer.observe(element);
     });
 
+    // LOAD THE BLOG POST DATA
+    loadBlogPostData();
+
     // DISABLE THE FILTER BY BRAND CHECKBOXES
     disableBrandCheckboxes();
 
@@ -37,15 +41,20 @@ document.addEventListener("DOMContentLoaded", () => {
     resetPaginationState()
 
     //  KICK OFF THE DATA LOADING
-    loadAllData();
+    loadAllProductData();
 
-    // ATTACK EVENT LISTENERS. THERE'S NO NEED FOR INLINE onChange/oninput
-    // INPUT VALUE FOR FITLER PRICE RANGE
-    priceInputMin.addEventListener("input", setMinInput);
-    priceInputMax.addEventListener("input", setMaxInput);
-    // SLIDER FOR FILTER PRICE RANGE
-    minValue.addEventListener("input", slideMin);
-    maxValue.addEventListener("input", slideMax);
+    // ATTACH EVENT LISTENERS. THERE'S NO NEED FOR INLINE onChange/oninput
+    if (priceInputMin && priceInputMax) {
+        // INPUT VALUE FOR FITLER PRICE RANGE
+        priceInputMin.addEventListener("input", setMinInput);
+        priceInputMax.addEventListener("input", setMaxInput);
+    }
+
+    if (minValue && maxValue) {
+        // SLIDER FOR FILTER PRICE RANGE
+        minValue.addEventListener("input", slideMin);
+        maxValue.addEventListener("input", slideMax);
+    }
 
     // PRODUCT TYPE, BRAND, MODEL TYPE CHECKBOXES
     setupProductTypeCheckboxes();
@@ -351,7 +360,7 @@ function clearAllSelectedFilters() {
     disableBrandCheckboxes();
 
     // RELOAD DATA WITH EMPTY FILTERS
-    loadAllData([]);
+    loadAllProductData([]);
 }
 
 // TODO START: REDUNDANT NEED TO CENTRALIZE THEM INTO SHARED JS MODULE
@@ -439,7 +448,7 @@ function setupProductTypeCheckboxes() {
                     disableBrandCheckboxes();
 
                     // RELOAD WITH UPDATED FILTERS
-                    loadAllData(getSelectedProductTypes());
+                    loadAllProductData(getSelectedProductTypes());
                 }
             });
 
@@ -451,7 +460,7 @@ function setupProductTypeCheckboxes() {
             }
 
             const selectedProductType = getSelectedProductTypes();
-            loadAllData(selectedProductType);
+            loadAllProductData(selectedProductType);
 
             resetPriceFilterUI();
             // console.log("Product types checked:", getSelectedProductTypes());
@@ -528,7 +537,7 @@ function getDataFiles(getSelectedProductTypes) {
 }
 
 // FETCHING THE ALL THE DATA FROM THE 4 JSON FILES
-async function loadAllData(getSelectedProductTypes = []) {
+async function loadAllProductData(getSelectedProductTypes = []) {
     // JSON FILE URLS
     const dataFiles = getDataFiles(getSelectedProductTypes);
 
@@ -588,7 +597,7 @@ function loadStaticCounters() {
     });
 
     Promise.all(filePromises).then(() => {
-        console.log("Static File Counters:", counterRegistry);
+        // console.log("Static File Counters:", counterRegistry);
         updateUICounters(counterRegistry);
     });
 }
@@ -630,8 +639,8 @@ let previousMin = null;
 let previousMax = null;
 let priceRangeManuallyRemoved = false;
 
-const sliderMinValue = parseFloat(minValue.min);
-const sliderMaxValue = parseFloat(maxValue.max);
+const sliderMinValue = minValue ? parseFloat(minValue.min) : 0;
+const sliderMaxValue = maxValue ? parseFloat(maxValue.max) : 100;
 
 function slideMin() {
     let gap = parseFloat(maxValue.value) - parseFloat(minValue.value);
@@ -791,4 +800,70 @@ function createSelectedFilterButtons({ text = "", className = "btn", id = "", on
     selectedFilterBtn.appendChild(svgIcon);
 
     return selectedFilterBtn;
+}
+
+async function loadBlogPostData() {
+    const container = document.querySelector(".post-container");
+    if (!container) return; // EXIT EARL IF NOT ON BLOG PAGE
+    try {
+        const response = await fetch("src/assets/data/blog-posts.json");
+        const blogPostData = await response.json();
+
+        // SORT POSTS BY DATE DESCENDING
+        const sortedPosts = blogPostData
+        .map(post => ({
+            ...post,
+            timestamp: new Date(post.postDate).getTime()
+        }))
+        .sort((a, b) => b.timestamp - a.timestamp)
+
+        sortedPosts.forEach(post => {
+            const postCard = createBlogPostCard(post);
+            container.appendChild(postCard);
+        });
+
+        window.blogPosts = sortedPosts;
+        window.currentBlogPage = 1;
+
+        renderBlogPage(window.blogPosts);
+    }
+    catch (error) {
+        console.error("Failed to fetch recent posts:", error);
+    }
+}
+
+function createBlogPostCard(post) {
+    const postCard = document.createElement("div");
+    postCard.className = "card post-card";
+    postCard.innerHTML = `
+        <div class="img-block">
+            <img src="${ post.postImage }" alt="${ post.postImageAlt }" loading="lazy">
+        </div>
+        <div class="card-body">
+            <div class="title-date-container">
+                <h6 class="blog-title">${ post.postTitle }</h6>
+                <div class="blog-date-details">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256">
+                        <path fill="currentColor" d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z" />
+                    </svg>
+                    <span class="date">${ post.postDate }</span>
+                </div>
+            </div>
+            <p class="minimum-time">10 MIN READ</p>
+            <p class="blog-description">${ post.postDescription }</p>
+        </div>
+    `;
+    return postCard;
+}
+// BLOG PAGE PAGINATION
+function renderBlogPage(blogPageData) {
+    renderPaginatedList({
+        items: blogPageData,
+        page: window.currentBlogPage || 1,
+        cardsPerPage: 6,
+        containerSelector: ".post-container",
+        paginationSelector: ".pagination-container",
+        labelSelector: null,
+        renderItem: createBlogPostCard
+    });
 }
