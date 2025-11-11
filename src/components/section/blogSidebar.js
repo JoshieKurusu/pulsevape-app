@@ -66,6 +66,27 @@ class blogSidebar extends HTMLElement {
                         </div>
                     </div>
                 </div>
+                <!-- TAGS -->
+                <div class="accordion-item">
+                    <h6 class="accordion-header">
+                        <button type="button" data-bs-toggle="collapse" data-bs-target="#blogTagsCollapse" aria-expanded="true" aria-controls="blogTagsCollapse" class="btn tags-btn">
+                            Blog Tags
+                            <span class="icon-toggle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 448 512" class="plus">
+                                    <path fill="currentColor" d="M256 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 160-160 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l160 0 0 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160 160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-160 0 0-160z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 448 512" class="minus">
+                                    <path fill="currentColor" d="M0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32z" />
+                                </svg>
+                            </span>
+                        </button>
+                    </h6>
+                    <div id="blogTagsCollapse" class="accordion-collapse show">
+                        <div class="accordion-body">
+                            <ul class="blog-tags"></ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         `;
         this.fetchRecentPosts();
@@ -74,17 +95,23 @@ class blogSidebar extends HTMLElement {
     async fetchRecentPosts() {
         try {
             const response = await fetch("src/assets/data/blog-posts.json");
-            const recentPosts = await response.json();
-            const container = this.querySelector(".recent-posts-container");
+            const blogPostData = await response.json();
+            const recentPostContainer = this.querySelector(".recent-posts-container");
+            const blogTagsContainer = this.querySelector(".blog-tags");
+
+            // CLEAR CONTAINER FIRST
+            recentPostContainer.innerHTML = "";
+            blogTagsContainer.innerHTML = "";
 
             // CONVERT POST DATE TO TIMESTAMPS AND SORT DESCENDING
-            const sortedPosts = recentPosts.map(post => ({
+            const sortedPosts = blogPostData.map(post => ({
                 ...post,
                 timestamp: new Date(post.postDate).getTime()
             }))
             .sort((a, b) => b.timestamp - a.timestamp)
             .slice(0, 4); // TAKE THE 4 MOST RECENT POST
 
+            // LOO THROUGH EACH RECENT BLOG POSTS
             sortedPosts.forEach(post => {
                 const postCard = document.createElement("div");
                 postCard.className = "card recent-post-card";
@@ -100,8 +127,29 @@ class blogSidebar extends HTMLElement {
                         <h6 class="blog-title">${ post.postTitle }</h6>
                     </div>
                 `;
-                container.append(postCard);
+                recentPostContainer.append(postCard);
             });
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const targetBlogId = urlParams.get("id");
+            const targetBlogTags = blogPostData.find(blogPost => blogPost.id === targetBlogId);
+
+            if (targetBlogTags && Array.isArray(targetBlogTags.postTags)) {
+                targetBlogTags.postTags.forEach((tag, index) => {
+                    const tagItem = document.createElement("li");
+                    tagItem.className = "blog-tags-items";
+
+                    const tagLink = document.createElement("a");
+                    tagLink.href = "/blogs.html";
+                    tagLink.className = "blog-tags-link";
+
+                    // ADD COMMA ONLY IF IT'S NOT THE LAST TAG
+                    tagLink.textContent = index < targetBlogTags.postTags.length - 1 ? `${ tag }, ` : tag;
+
+                    tagItem.appendChild(tagLink);
+                    blogTagsContainer.append(tagItem);
+                });
+            }
         }
         catch (error) {
             console.error("Failed to fetch recent posts:", error);

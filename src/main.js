@@ -536,7 +536,7 @@ function getDataFiles(getSelectedProductTypes) {
     : Object.values(fileMap); // DEFAULT: LOAD ALL
 }
 
-// FETCHING THE ALL THE DATA FROM THE 4 JSON FILES
+// FETCHING THE ALL THE DATA FROM THE 4 PRODUCTS JSON FILES
 async function loadAllProductData(getSelectedProductTypes = []) {
     // JSON FILE URLS
     const dataFiles = getDataFiles(getSelectedProductTypes);
@@ -802,36 +802,50 @@ function createSelectedFilterButtons({ text = "", className = "btn", id = "", on
     return selectedFilterBtn;
 }
 
+// USE URLSearchParams TO READ THE ID from THE URL
+const urlParams = new URLSearchParams(window.location.search);
+const blogPostId = urlParams.get("id");
+
+// FETCH THE BLOG POST DATA
 async function loadBlogPostData() {
-    const container = document.querySelector(".post-container");
-    if (!container) return; // EXIT EARL IF NOT ON BLOG PAGE
+    const postContainer = document.querySelector(".post-container");
+    const postContentContainer = document.querySelector(".post-content");
+
+    // EXIT EARL IF NOT ON BLOG PAGE
+    // if (!postContainer) return;
+    // if (!postContentContainer) return;
+
     try {
         const response = await fetch("src/assets/data/blog-posts.json");
         const blogPostData = await response.json();
+        const allPosts = blogPostData
 
-        // SORT POSTS BY DATE DESCENDING
-        const sortedPosts = blogPostData
-        .map(post => ({
-            ...post,
-            timestamp: new Date(post.postDate).getTime()
-        }))
-        .sort((a, b) => b.timestamp - a.timestamp)
+        const isDetailPage = blogPostId !== null;
 
-        sortedPosts.forEach(post => {
-            const postCard = createBlogPostCard(post);
-            container.appendChild(postCard);
-        });
+        if(!isDetailPage) {
+            allPosts.forEach(post => {
+                const postCard = createBlogPostCard(post);
+                postContainer.appendChild(postCard);
+            });
+        }
 
-        window.blogPosts = sortedPosts;
+        window.blogPosts = allPosts;
         window.currentBlogPage = 1;
-
         renderBlogPage(window.blogPosts);
+
+        const targetPost = blogPostData.find(post => post.id === blogPostId);
+
+        if (targetPost) {
+            const postContentCard = createPostContentCard(targetPost);
+            postContentContainer.appendChild(postContentCard);
+        }
     }
     catch (error) {
         console.error("Failed to fetch recent posts:", error);
     }
 }
 
+// BLOG PAGE POST
 function createBlogPostCard(post) {
     const postCard = document.createElement("div");
     postCard.className = "card post-card";
@@ -841,7 +855,7 @@ function createBlogPostCard(post) {
         </div>
         <div class="card-body">
             <div class="title-date-container">
-                <h6 class="blog-title">${ post.postTitle }</h6>
+                <a href="/blog-details.html?id=${ post.id }" class="blog-title">${ post.postTitle }</a>
                 <div class="blog-date-details">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256">
                         <path fill="currentColor" d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-68-76a12,12,0,1,1-12-12A12,12,0,0,1,140,132Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,132ZM96,172a12,12,0,1,1-12-12A12,12,0,0,1,96,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,140,172Zm44,0a12,12,0,1,1-12-12A12,12,0,0,1,184,172Z" />
@@ -855,6 +869,7 @@ function createBlogPostCard(post) {
     `;
     return postCard;
 }
+
 // BLOG PAGE PAGINATION
 function renderBlogPage(blogPageData) {
     renderPaginatedList({
@@ -866,4 +881,21 @@ function renderBlogPage(blogPageData) {
         labelSelector: null,
         renderItem: createBlogPostCard
     });
+}
+
+// BLOG DETAILS PAGE POST CONTENT
+function createPostContentCard(post) {
+    const postContentCard = document.createElement("div");
+    postContentCard.className = "card target-post-card";
+    postContentCard.innerHTML = `
+        <div class="img-block">
+            <img src="src/assets/images/sample-blog-post-details-img.jpg" alt="${ post.postImageAlt }"> <!--TODO: CHANGE THE SRC TO DYNAMIC -->
+        </div>
+        <div class="card-body">
+            <h3 class="post-title">${ post.postTitle }</h3>
+            <p class="minimum-time">10 MIN READ</p>
+            <p class="post-paragraph">${ post.postContent }</p>
+        </div>
+    `;
+    return postContentCard;
 }
