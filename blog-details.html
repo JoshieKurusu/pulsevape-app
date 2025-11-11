@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/svg+xml" href="src/assets/images/pulseVape-icon.webp">
+        <title>PulseVape</title>
+        <link rel="stylesheet" href="src/styles/main.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
+        <script src="src/components/layout/header.js" defer></script>
+        <script src="src/components/layout/footer.js" defer></script>
+        <script src="src/main.js" type="module"></script>
+    </head>
+    <body>
+        <!-- HEADER CONTENT -->
+        <header-component></header-component>
+        <!-- MAIN CONTENT -->
+        <main>
+            <!-- BANNER SECTION -->
+            <section id="banner-section" class="banner-4-section">
+                <banner-content title="Blog Detail"></banner-content>
+            </section>
+            <!-- POST SECTION -->
+            <section class="blog-details-section">
+                <div class="container-fluid">
+                    <!-- SIDEBAR SECTION -->
+                    <aside id="blog-post-sidebar" class="blog-post-sidebar">
+                        <blog-sidebar></blog-sidebar>
+                    </aside>
+                    <!-- POST CONTENT -->
+                    <div class="post-content"></div>
+                </div>
+            </section>
+            <!-- RELATED POST SECTION -->
+        </main>
+        <!-- FOOTER CONTENT -->
+        <footer-component></footer-component>
+        <!-- JAVASCRIPT -->
+        <script src="src/main.js" type="module"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
