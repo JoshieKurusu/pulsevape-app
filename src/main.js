@@ -31,17 +31,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if (element) observer.observe(element);
     });
 
-    // LOAD THE BLOG POST DATA
-    loadBlogPostData();
+    // carouselItems(); // LOAD POSTS INTO CAROUSEL
+    // carouselClickDrag(); // THEN INITIALIZE DRAG LOGIC
 
-    // DISABLE THE FILTER BY BRAND CHECKBOXES
-    disableBrandCheckboxes();
+    loadBlogPostData(); // LOAD THE BLOG POST DATA
 
-    // ENSURE THE PAGINATION SYSTEM IS STABLE
-    resetPaginationState()
+    disableBrandCheckboxes(); // DISABLE THE FILTER BY BRAND CHECKBOXES
 
-    //  KICK OFF THE DATA LOADING
-    loadAllProductData();
+    resetPaginationState(); // ENSURE THE PAGINATION SYSTEM IS STABLE
+
+    loadAllProductData(); // KICK OFF THE DATA LOADING
 
     // ATTACH EVENT LISTENERS. THERE'S NO NEED FOR INLINE onChange/oninput
     if (priceInputMin && priceInputMax) {
@@ -61,8 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupProductBrandCheckboxes();
     setupModelTypeCheckboxes();
 
-    // STATIC PRODUCT COUNTER
-    loadStaticCounters();
+    loadStaticCounters(); // STATIC PRODUCT COUNTER
 });
 
 window.addEventListener("resize", () => {
@@ -810,21 +808,18 @@ const blogPostId = urlParams.get("id");
 async function loadBlogPostData() {
     const postContainer = document.querySelector(".post-container");
     const postContentContainer = document.querySelector(".post-content");
-
-    // EXIT EARL IF NOT ON BLOG PAGE
-    // if (!postContainer) return;
-    // if (!postContentContainer) return;
+    if (!postContainer && !postContentContainer) return; // EXIT EARLY IF NOT ON BLOG PAGE
 
     try {
         const response = await fetch("src/assets/data/blog-posts.json");
         const blogPostData = await response.json();
-        const allPosts = blogPostData
+        const allPosts = blogPostData;
 
         const isDetailPage = blogPostId !== null;
 
-        if(!isDetailPage) {
+        if(!isDetailPage && postContainer) {
             allPosts.forEach(post => {
-                const postCard = createBlogPostCard(post);
+                const postCard = createBlogPostCard(post, "post-card");
                 postContainer.appendChild(postCard);
             });
         }
@@ -833,12 +828,16 @@ async function loadBlogPostData() {
         window.currentBlogPage = 1;
         renderBlogPage(window.blogPosts);
 
-        const targetPost = blogPostData.find(post => post.id === blogPostId);
-
-        if (targetPost) {
-            const postContentCard = createPostContentCard(targetPost);
-            postContentContainer.appendChild(postContentCard);
+        if (isDetailPage && postContentContainer) {
+            const targetPost = blogPostData.find(post => String(post.id) === blogPostId);
+            if (targetPost) {
+                const postContentCard = createPostContentCard(targetPost);
+                postContentContainer.appendChild(postContentCard);
+            }
         }
+
+        carouselItems(blogPostData, blogPostId);
+        carouselClickDrag();
     }
     catch (error) {
         console.error("Failed to fetch recent posts:", error);
@@ -846,9 +845,9 @@ async function loadBlogPostData() {
 }
 
 // BLOG PAGE POST
-function createBlogPostCard(post) {
+function createBlogPostCard(post, variant = "post-card") {
     const postCard = document.createElement("div");
-    postCard.className = "card post-card";
+    postCard.className = `card ${ variant }`;
     postCard.innerHTML = `
         <div class="img-block">
             <img src="${ post.postImage }" alt="${ post.postImageAlt }" loading="lazy">
@@ -898,4 +897,90 @@ function createPostContentCard(post) {
         </div>
     `;
     return postContentCard;
+}
+
+// CUSTOM CAROUSEL FOR CLICK AND DRAG
+function carouselClickDrag() {
+    const carouselTrack = document.querySelector(".carousel-track");
+    if (!carouselTrack) return; // STOP IF NOT FOUND
+
+    const firstItem = carouselTrack.querySelector(".carousel-items");
+    if (!firstItem) return; // STOP IF NO ITEMS YET
+
+    const firstCardWidth = firstItem.offsetWidth;
+    const carouselTrackChildren = [...carouselTrack.children];
+
+    let isDragging = false, startX, startScrollLeft;
+    let carouselItemPerView = Math.round(carouselTrack.offsetWidth / firstCardWidth);
+
+    // CLONE LAST FEW CAROUSEL ITEMS TO THE BEGINNING
+    carouselTrackChildren.slice(-carouselItemPerView).reverse().forEach(carouselItem => {
+        carouselTrack.insertAdjacentHTML("afterbegin", carouselItem.outerHTML);
+    });
+
+    // CLONE FIRST FEW CAROUSEL ITEMS TO THE END
+    carouselTrackChildren.slice(0, carouselItemPerView).forEach(carouselItem => {
+        carouselTrack.insertAdjacentHTML("beforeend", carouselItem.outerHTML);
+    });
+
+    // POSITION CAROUSEL TO HIDE THE CLONED CAROUSEL ITEMS
+    carouselTrack.classList.add("no-transition");
+    carouselTrack.scrollLeft = carouselTrack.offsetWidth;
+    carouselTrack.classList.remove("no-transition");
+
+    // DRAG LOGIC
+    const dragStart = (event) => {
+        isDragging = true;
+
+        carouselTrack.classList.add("dragging");
+        startX = event.pageX;
+        startScrollLeft = carouselTrack.scrollLeft;
+    };
+
+    const dragging = (event) => {
+        if (!isDragging) return;
+        carouselTrack.scrollLeft = startScrollLeft - (event.pageX - startX);
+    };
+
+    const dragStop = () => {
+        isDragging = false;
+        carouselTrack.classList.remove("dragging");
+    };
+
+    // INFINITE SCROLL RESET
+    const infiniteScroll = () => {
+        if (carouselTrack.scrollLeft === 0) {
+            carouselTrack.classList.add("no-transition");
+            carouselTrack.scrollLeft = carouselTrack.scrollWidth - (2 * carouselTrack.offsetWidth);
+            carouselTrack.classList.remove("no-transition");
+        }
+        else if (Math.ceil(carouselTrack.scrollLeft) === carouselTrack.scrollWidth - carouselTrack.offsetWidth) {
+            carouselTrack.classList.add("no-transition");
+            carouselTrack.scrollLeft = carouselTrack.offsetWidth;
+            carouselTrack.classList.remove("no-transition");
+        }
+        else {
+            return;
+        }
+    }
+
+    // EVENT LISTERNERS
+    carouselTrack.addEventListener("mousedown", dragStart);
+    carouselTrack.addEventListener("mousemove", dragging);
+    carouselTrack.addEventListener("mouseup", dragStop);
+    carouselTrack.addEventListener("scroll", infiniteScroll);
+}
+
+// BLOG POST FOR CAROUSEL-ITEMS
+function carouselItems(posts, targetPostId) {
+    const carouselTrack = document.querySelector(".carousel-track");
+    if (!carouselTrack || !Array.isArray(posts)) return;
+
+    posts.forEach(post => {
+        if (String(post.id) === String(targetPostId)) return; // SKIP THE TARGETED POST
+
+        // CREATE A CAROUSEL-ITEMS AND APPEND
+        const carouselItem = createBlogPostCard(post, "carousel-items");
+        carouselTrack.append(carouselItem);
+    });
 }
