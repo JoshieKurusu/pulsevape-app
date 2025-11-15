@@ -217,6 +217,7 @@
     color: #FFF;
     border: 1px solid #FFF;
     column-gap: 8px;
+    text-decoration: none;
     background-color: transparent;
     font-weight: 700;
     font-size: clamp(0.938rem, 0vw + 0.938rem, 0.938rem);
@@ -489,7 +490,6 @@
                         }
                     }
                     .recent-posts-container {
-                        margin-bottom: 16px;
                         row-gap: 12px;
                         flex-direction: column;
                         @include flexbox(center, null);

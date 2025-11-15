@@ -333,6 +333,7 @@ main .home-hero-section .container-fluid .hero-content .in-store-btn {
   border: 1px solid #FFF;
   -moz-column-gap: 8px;
        column-gap: 8px;
+  text-decoration: none;
   background-color: transparent;
   font-weight: 700;
   font-size: clamp(0.938rem, 0vw + 0.938rem, 0.938rem);
@@ -803,6 +804,7 @@ main .best-seller-section .container-fluid .best-seller-content .shop-btn {
   border: 1px solid #FFF;
   -moz-column-gap: 8px;
        column-gap: 8px;
+  text-decoration: none;
   background-color: transparent;
   font-weight: 700;
   font-size: clamp(0.938rem, 0vw + 0.938rem, 0.938rem);
@@ -2876,7 +2878,6 @@ main .contact-area-section .container-fluid .contact-area-map iframe {
     margin-bottom: 0;
   }
   main .blog-post-section .container-fluid .blog-post-sidebar .accordion .accordion-item .accordion-collapse .accordion-body .recent-posts-container {
-    margin-bottom: 16px;
     row-gap: 12px;
     flex-direction: column;
     display: flex;
@@ -3080,7 +3081,6 @@ main .contact-area-section .container-fluid .contact-area-map iframe {
     margin-bottom: 0;
   }
   main .blog-details-section .container-fluid .blog-post-sidebar .accordion .accordion-item .accordion-collapse .accordion-body .recent-posts-container {
-    margin-bottom: 16px;
     row-gap: 12px;
     flex-direction: column;
     display: flex;
