@@ -145,8 +145,6 @@ class blogSidebar extends HTMLElement {
                 const targetBlogId = urlParams.get("id");
                 const targetBlogTags = blogPostData.find(blogPost => blogPost.id === targetBlogId);
 
-                console.log(blogPostData);
-
                 if (targetBlogTags && Array.isArray(targetBlogTags.postTags)) {
                     targetBlogTags.postTags.forEach((tag, index) => {
                         const tagItem = document.createElement("li");
@@ -163,8 +161,6 @@ class blogSidebar extends HTMLElement {
                         blogTagsContainer.append(tagItem);
                     });
                 }
-            } else {
-                console.log("cant find the path");
             }
         }
         catch (error) {
