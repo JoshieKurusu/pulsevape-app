@@ -21,16 +21,16 @@ class Header extends HTMLElement {
                             </a>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a href="/" id="nav-home" class="nav-link">Home</a>
+                                    <a href="/pulsevape-app" id="nav-home" class="nav-link">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/shop.html" id="nav-shop" class="nav-link">Shop</a>
+                                    <a href="/pulsevape-app/shop.html" id="nav-shop" class="nav-link">Shop</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/blogs.html" id="nav-blogs" class="nav-link">Blogs</a>
+                                    <a href="/pulsevape-app/blogs.html" id="nav-blogs" class="nav-link">Blogs</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/about-us.html" id="nav-about" class="nav-link">About Us</a>
+                                    <a href="/pulsevape-app/about-us.html" id="nav-about" class="nav-link">About Us</a>
                                 </li>
                             </ul>
                             <div class="menu-contact-info d-md-none">
@@ -73,17 +73,18 @@ function initializeNavigation() {
     // * DO THIS BEFORE UPLOADING IN GITHUB
     // * CHANGE THE PATH TO /pulsevape-app, /pulsevape-app/shop, /pulsevape-app/blogs, /pulsevape-app/about-us
     const pageLinks = [
-        { path: "/", navId: "nav-home" },
-        { path: "/shop", navId: "nav-shop" },
-        { path: "/blogs", navId: "nav-blogs" },
-        { path: "/about-us", navId: "nav-about" },
+        { path: "/pulsevape-app", navId: "nav-home" },
+        { path: "/pulsevape-app/shop", navId: "nav-shop" },
+        { path: "/pulsevape-app/blogs", navId: "nav-blogs" },
+        { path: "/pulsevape-app/blog-details", navId: "nav-blogs" }, // MAP blog-details TO nav-blogs
+        { path: "/pulsevape-app/about-us", navId: "nav-about" },
     ];
 
     const match = pageLinks.find(link => currentPath === link.path);
 
     if (match) {
         navLinks.forEach(link => link.classList.remove("active"));
-        const activeLink = Array.from(navLinks).find(link => link.getAttribute("href").replace(/\.html$/, "") === match.path);
+        const activeLink = document.getElementById(match.navId);
         activeLink?.classList.add("active");
     }
 
