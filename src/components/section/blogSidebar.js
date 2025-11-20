@@ -151,11 +151,10 @@ class blogSidebar extends HTMLElement {
                         tagItem.className = "blog-tags-items";
 
                         const tagLink = document.createElement("a");
-                        tagLink.href = "/blogs.html";
+                        tagLink.href = "/pulsevape-app/blogs.html";
                         tagLink.className = "blog-tags-link";
 
-                        // ADD COMMA ONLY IF IT'S NOT THE LAST TAG
-                        tagLink.textContent = index < targetBlogTags.postTags.length - 1 ? `${ tag }, ` : tag;
+                        tagLink.textContent = index < targetBlogTags.postTags.length - 1 ? `${ tag }, ` : tag; // ADD COMMA ONLY IF IT'S NOT THE LAST TAG
 
                         tagItem.appendChild(tagLink);
                         blogTagsContainer.append(tagItem);
