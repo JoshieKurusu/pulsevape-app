@@ -112,7 +112,7 @@ class blogSidebar extends HTMLElement {
             const blogDetailsPath = window.location.pathname.replace(/\.html$/, "").replace(/\/$/, "");
             console.log(blogDetailsPath);
 
-            if (blogDetailsPath === "/blog-details") {
+            if (blogDetailsPath === "/pulsevape-app/blog-details") {
                 recentPostContainer.style.marginBottom = "16px"; // ADD MARGIN BOTTOM IN THE RECENT POST CONTAINER WHEN ITS IN BLOG DETAILS
 
                 const accordionTagItem = document.createElement("div");
