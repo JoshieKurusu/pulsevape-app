@@ -61,6 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setupModelTypeCheckboxes();
 
     loadStaticCounters(); // STATIC PRODUCT COUNTER
+
+    filtersFromQuery();
 });
 
 window.addEventListener("resize", () => {
@@ -107,6 +109,28 @@ function filterModelType(products, getSelectedModelTypes) {
     });
 }
 // TODO END
+
+function filtersFromQuery() {
+    const urlParams = new URLSearchParams(window.location.search); // PARSE THE QUERY STRING
+    const category = urlParams.get("category"); // "vapeMods" or "atomizers" or "ejuices" or "accessories"
+    const type = urlParams.get("type"); // "variable" or "mechanical"
+
+    if (category) {
+        const checkbox = document.getElementById(category);
+        if (checkbox) {
+            checkbox.checked = true;
+            checkbox.dispatchEvent(new Event("change")); // triggers your existing logic
+        }
+    }
+
+    if (type) {
+        const typeCheckbox = document.getElementById(type);
+        if (typeCheckbox) {
+            typeCheckbox.checked = true;
+            typeCheckbox.dispatchEvent(new Event("change"));
+        }
+    }
+}
 
 // SHOP PAGE PAGINATION LABEL
 function getPaginationLabel(currentPage, cardsPerPage, totalItems) {
@@ -341,24 +365,19 @@ function clearAllSelectedFilters() {
     const allCheckboxes = document.querySelectorAll(".form-check-input");
     const modelTypeContainer = document.querySelector(".model-type-filter");
 
-    // HIDE THE FILTER BY MODEL TYPE
-    modelTypeContainer.style.display = "none";
+    modelTypeContainer.style.display = "none"; // HIDE THE FILTER BY MODEL TYPE
 
-    // UNCHECK ALL FILTERS
-    allCheckboxes.forEach(checkbox => checkbox.checked = false);
+    allCheckboxes.forEach(checkbox => checkbox.checked = false); // UNCHECK ALL FILTERS
 
     // REMOVE ALL SELECTED BUTTONS
     const allSelectedBtns = selectedBtnsContainer.querySelectorAll(".selected-btn");
     allSelectedBtns.forEach(button => button.remove());
 
-    // RESET PRICE FILTER UI
-    resetPriceFilterUI();
+    resetPriceFilterUI(); // RESET PRICE FILTER UI
 
-    // DISABLE BRAND CHECKBOXES
-    disableBrandCheckboxes();
+    disableBrandCheckboxes(); // DISABLE BRAND CHECKBOXES
 
-    // RELOAD DATA WITH EMPTY FILTERS
-    loadAllProductData([]);
+    loadAllProductData([]); // RELOAD DATA WITH EMPTY FILTERS
 }
 
 // TODO START: REDUNDANT NEED TO CENTRALIZE THEM INTO SHARED JS MODULE
@@ -378,14 +397,13 @@ function getSelectedModelTypes() {
     const modelTypeCheckboxes = document.querySelectorAll(".model-type-form-check .form-check-input");
     return Array.from(modelTypeCheckboxes)
         .filter(checkbox => checkbox.checked)
-        .map(checkbox => checkbox.id.toLowerCase());
+        .map(checkbox => checkbox.dataset.slug || checkbox.id.toLowerCase());
 }
 // TODO END
 
 // TODO START: CONSIDER MERGING SETUP + SYNC INTO A SINGLE IRCHESTRATOR PER FILTER TYPE
 function setupProductTypeCheckboxes() {
     const productTypeCheckboxes = document.querySelectorAll(".product-type-form-check .form-check-input");
-
     productTypeCheckboxes.forEach(productTypeCheckbox => {
         productTypeCheckbox.addEventListener("change", () => {
             const isVapeModSelected = Array.from(productTypeCheckboxes)
@@ -427,14 +445,11 @@ function setupProductTypeCheckboxes() {
                 buttonPrefix: "product-type-btn",
                 getSelectedFn: getSelectedProductTypes,
                 onRemoveCallback: () => {
-                    // UNCHECK ALL BRAND CHECKBOXES
-                    productBrandCheckboxes.forEach(checkboxes => checkboxes.checked = false);
+                    productBrandCheckboxes.forEach(checkboxes => checkboxes.checked = false); // UNCHECK ALL BRAND CHECKBOXES
 
-                    // UNCHECK ALL MODEL TYPE CHECKBOXES
-                    modelTypeCheckboxes.forEach(checkboxes => checkboxes.checked = false);
+                    modelTypeCheckboxes.forEach(checkboxes => checkboxes.checked = false); // UNCHECK ALL MODEL TYPE CHECKBOXES
 
-                    // HIDE THE FILTER BY MODEL TYPE
-                    modelTypeContainer.style.display = "none";
+                    modelTypeContainer.style.display = "none"; // HIDE THE FILTER BY MODEL TYPE
 
                     // REMOVE ALL BRAND OR MODEL SELECTED BUTTONS
                     const productSelectedBtns = document.querySelectorAll(".selected-btn");
@@ -442,11 +457,9 @@ function setupProductTypeCheckboxes() {
                         if (buttons.id.startsWith("product-brand-btn") || buttons.id.startsWith("model-type-btn")) buttons.remove();
                     });
 
-                    // DISABLE BRAND CHECKBOXES
-                    disableBrandCheckboxes();
+                    disableBrandCheckboxes(); // DISABLE BRAND CHECKBOXES
 
-                    // RELOAD WITH UPDATED FILTERS
-                    loadAllProductData(getSelectedProductTypes());
+                    loadAllProductData(getSelectedProductTypes()); // RELOAD WITH UPDATED FILTERS
                 }
             });
 
@@ -467,7 +480,6 @@ function setupProductTypeCheckboxes() {
 }
 function setupProductBrandCheckboxes() {
     const brandTypeCheckboxes = document.querySelectorAll(".product-brand-form-check .form-check-input");
-
     brandTypeCheckboxes.forEach(brandTypeCheckbox => {
         brandTypeCheckbox.addEventListener("change", () => {
             syncSelectedTypeButton({
@@ -486,18 +498,33 @@ function setupProductBrandCheckboxes() {
 function setupModelTypeCheckboxes() {
     const modelTypeCheckboxes = document.querySelectorAll(".model-type-form-check .form-check-input");
     // console.log("Model Type checkboxes found:", modelTypeCheckboxes.length);
-
     modelTypeCheckboxes.forEach(modelTypeCheckbox => {
         modelTypeCheckbox.addEventListener("change", () => {
+            // SYNC SELECTED FILTER BUTTONS
             syncSelectedTypeButton({
                 containerSelector: ".model-type-form-check",
                 buttonPrefix: "model-type-btn",
                 getSelectedFn: getSelectedModelTypes,
-                onRemoveCallback: getSelectedModelTypes
+                onRemoveCallback: () => {
+                    loadAllProductData(getSelectedProductTypes(), getSelectedModelTypes()); // When a model type filter is removed, reload products with updated filters
+                }
             });
 
             resetPriceFilterUI();
-            getSelectedModelTypes();
+
+            // ENSURE PARENT vapeMods IS SELECTED IF ANY MODEL TYPE IS CHECKED
+            const selectedModelTypes = getSelectedModelTypes();
+            if (selectedModelTypes.length > 0) {
+                const vapeModsCheckbox = document.getElementById("vapeMods");
+                if (vapeModsCheckbox && !vapeModsCheckbox.checked) {
+                    vapeModsCheckbox.checked = true;
+                    vapeModsCheckbox.dispatchEvent(new Event("change"));
+                }
+            }
+
+            // RELOAD PRODUCTS WITH BOTH PRODUCT TYPE AND MODEL TYPE FILTERS
+            const selectedProductType = getSelectedProductTypes();
+            loadAllProductData(selectedProductType, selectedModelTypes);
         });
     });
 }
@@ -535,14 +562,20 @@ function getDataFiles(getSelectedProductTypes) {
 }
 
 // FETCHING THE ALL THE DATA FROM THE 4 PRODUCTS JSON FILES
-async function loadAllProductData(getSelectedProductTypes = []) {
-    // JSON FILE URLS
-    const dataFiles = getDataFiles(getSelectedProductTypes);
+async function loadAllProductData(getSelectedProductTypes = [], getSelectedModelTypes = []) {
+    const dataFiles = getDataFiles(getSelectedProductTypes); // JSON FILE URLS
 
     try {
         const responses = await Promise.all(dataFiles.map(url => fetch(url)));
         const dataArray = await Promise.all(responses.map(res => res.json()));
-        const combinedData = dataArray.flat(); // USE .flat() IF EACH FILE RETURNS AN ARRAY
+        let combinedData = dataArray.flat(); // USE .flat() IF EACH FILE RETURNS AN ARRAY
+
+        // FILTER BY MODEL TYPE IF AN ARE SELECTED
+        if (getSelectedModelTypes.length > 0) {
+            combinedData = combinedData.filter(product =>
+                getSelectedModelTypes.includes(product.type?.toLowerCase().replace(/\s+/g, "-"))
+            );
+        }
 
         window.allProducts = combinedData; // STORE GLOBALLY FOR PAGINATION
         window.filteredProducts = [];
@@ -571,8 +604,7 @@ function loadStaticCounters() {
         .then(data => {
             if (!Array.isArray(data)) return;
 
-            // COUNT BY PRODUCT TYPE
-            counterRegistry.productType[key] = data.length;
+            counterRegistry.productType[key] = data.length; // COUNT BY PRODUCT TYPE
 
             data.forEach(product => {
                 // COUNT BY BRAND
@@ -595,8 +627,7 @@ function loadStaticCounters() {
     });
 
     Promise.all(filePromises).then(() => {
-        // console.log("Static File Counters:", counterRegistry);
-        updateUICounters(counterRegistry);
+        updateUICounters(counterRegistry); // console.log("Static File Counters:", counterRegistry);
     });
 }
 
