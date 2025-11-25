@@ -73,22 +73,21 @@
 @mixin container-max-width {
     max-width: 1024px;
     margin: 0 auto;
-    // @media (min-width: 1200px) {
-    //     max-width: 1140px;
-    // }
-    // @media (min-width: 1400px) {
-    //     max-width: 1260px;
-    // }
+    @media (min-width: 1200px) {
+        max-width: none;
+        width: clamp(1024px, calc(1024px + 128 * ((100vw - 1200px) / 200)), 1152px);
+    }
 }
 @mixin banner-max-width {
     max-width: 1004px;
     margin: 0 auto;
-    // @media (min-width: 1200px) {
-    //     max-width: 1120px;
-    // }
-    // @media (min-width: 1400px) {
-    //     max-width: 1240px;
-    // }
+    @media (min-width: 1200px) {
+        max-width: none;
+        width: clamp(992px, calc(992px + 127 * ((100vw - 1200px) / 200)), 1119px);
+    }
+    @media (min-width: 1400px) {
+        max-width: 1240px;
+    }
 }
 //TODO END
 @mixin offcanvas {
@@ -663,7 +662,7 @@
     }
 }
 body {
-    background: fixed url("../assets/images/whole-page-background.jpg") no-repeat;
+    background: fixed url("../assets/images/whole-page-background.jpg") center / cover no-repeat;
     scroll-behavior: smooth;
 }
 header {
@@ -853,6 +852,10 @@ main {
         .container-fluid {
             @include container-max-width();
             @include responsive-padding();
+            padding: 81px 16px 55px;
+            flex-direction: column;
+            gap: 24px 0;
+            @include flexbox(center, center);
             .hero-content {
                 color: #FFF;
                 @include font-family-subheading();
@@ -886,12 +889,8 @@ main {
                     @include button-animated();
                 }
             }
-            .hero-image {
-                margin: 24px auto 0;
-                max-width: 472px;
-                img {
-                    @include image-cover();
-                }
+            .hero-image img {
+                @include image-cover();
             }
         }
     }
@@ -1655,18 +1654,24 @@ main {
         }
     }
     main {
-        .home-hero-section .container-fuid .hero-content {
-            .hero-subheading {
-                font-size: clamp(0.938rem, 2.094vw + 0.184rem, 1.188rem);
-                line-height: clamp(1.125rem, 2.513vw + 0.22rem, 1.425rem);
+        .home-hero-section .container-fuid {
+            .hero-content {
+                .hero-subheading {
+                    font-size: clamp(0.938rem, 2.094vw + 0.184rem, 1.188rem);
+                    line-height: clamp(1.125rem, 2.513vw + 0.22rem, 1.425rem);
+                }
+                .hero-heading {
+                    font-size: clamp(2.188rem, 5.236vw + 0.303rem, 2.813rem);
+                    line-height: clamp(2.625rem, 6.283vw + 0.363rem, 3.375rem);
+                }
+                .hero-paragraph {
+                    font-size: clamp(0.813rem, 0.524vw + 0.624rem, 0.875rem);
+                    line-height: clamp(1.056rem, 0.681vw + 0.811rem, 1.138rem);
+                }
             }
-            .hero-heading {
-                font-size: clamp(2.188rem, 5.236vw + 0.303rem, 2.813rem);
-                line-height: clamp(2.625rem, 6.283vw + 0.363rem, 3.375rem);
-            }
-            .hero-paragraph {
-                font-size: clamp(0.813rem, 0.524vw + 0.624rem, 0.875rem);
-                line-height: clamp(1.056rem, 0.681vw + 0.811rem, 1.138rem);
+            .hero-image {
+                flex: 0 0 auto;
+                width: 83.33333333%;
             }
         }
         .banner-1-section .container-fluid .card .banner-1-content .banner-heading {
@@ -1769,8 +1774,10 @@ main {
     }
 }
 @media (min-width: 640px) {
-    .best-seller-section .container-fluid {
-        padding: 0 16px;
+    main {
+        .best-seller-section .container-fluid {
+            padding: 0 16px;
+        }
     }
 }
 @media (min-width: 768px) {
@@ -1825,30 +1832,25 @@ main {
     }
     main {
         .home-hero-section .container-fluid {
-            padding: 81px 16px 55px;
-            flex-direction: row;
-            column-gap: 24px;
-            @include flexbox(start, center);
             .hero-content {
-                max-width: 516px;
-                width: 100%;
-                margin-top: 26px;
                 .hero-subheading {
-                    font-size: clamp(1rem, 0vw + 1rem, 1rem);
-                    line-height: clamp(1.2rem, 0vw + 1.2rem, 1.2rem);
+                    font-size: clamp(1rem, 1.794vw + 0.139rem, 1.25rem);
+                    line-height: clamp(1.2rem, 2.152vw + 0.167rem, 1.5rem);
                 }
                 .hero-heading {
-                    max-width: 468px;
-                    font-size: clamp(2.438rem, 1.096vw + 1.911rem, 2.75rem);
-                    line-height: clamp(2.925rem, 1.316vw + 2.293rem, 3.3rem);
+                    // max-width: 468px;
+                    font-size: clamp(2.438rem, 4.036vw + 0.5rem, 3rem);
+                    line-height: clamp(2.925rem, 4.843vw + 0.6rem, 3.6rem);
                 }
                 .hero-paragraph {
-                    font-size: clamp(0.813rem, 0.138vw + 0.746rem, 0.875rem);
-                    line-height: clamp(1.056rem, 0.18vw + 0.97rem, 1.138rem);
+                    max-width: none;
+                    width: clamp(370px, calc(370px + 52 * ((100vw - 768px) / 224)), 422px);
+                    font-size: clamp(0.813rem, 1.345vw + 0.167rem, 1rem);
+                    line-height: clamp(1.056rem, 1.749vw + 0.217rem, 1.3rem);
                 }
             }
             .hero-image {
-                margin: 0;
+                width: 66.66666667%;
             }
         }
         .banner-1-section .container-fluid .card {
@@ -1984,6 +1986,32 @@ main {
 }
 @media (min-width: 992px) {
     main {
+        .home-hero-section .container-fluid {
+            align-items: start;
+            flex-direction: row;
+            gap: 0 24px;
+            .hero-content {
+                flex: 0 0 auto;
+                width: 50%;
+                margin-top: 26px;
+                .hero-subheading {
+                    font-size: clamp(1rem, 0vw + 1rem, 1rem);
+                    line-height: clamp(1.2rem, 0vw + 1.2rem, 1.2rem);
+                }
+                .hero-heading {
+                    font-size: clamp(2.75rem, 0vw + 2.75rem, 2.75rem);
+                    line-height: clamp(3.3rem, 0vw + 3.3rem, 3.3rem);
+                }
+                .hero-paragraph {
+                    width: 404px;
+                    font-size: clamp(0.875rem, 0vw + 0.875rem, 0.875rem);
+                    line-height: clamp(1.138rem, 0vw + 1.138rem, 1.138rem);
+                }
+            }
+            .hero-image {
+                width: 50%;
+            }
+        }
         .banner-1-section .container-fluid .card .banner-1-content .banner-heading {
             font-size: clamp(2.25rem, 0vw + 2.25rem, 2.25rem);
             line-height: clamp(2.813rem, 0vw + 2.813rem, 2.813rem);
@@ -2098,25 +2126,36 @@ main {
 @media (min-width: 1200px) {
     main {
         .home-hero-section .container-fluid {
-            justify-content: space-between;
+            .hero-content {
+                .hero-heading {
+                    font-size: clamp(2.75rem, 3.429vw + 0.125rem, 3.125rem);
+                    line-height: clamp(3.3rem, 4.114vw + 0.15rem, 3.75rem);
+                }
+            }
         }
-        //TODO ADJUST THIS WHEN THE MAX-WIDTH FOR THE CONTAINER IS FINAL
-        // .category-section .container-fluid {
-        //     .category-content {
-        //         .category-cards .card {
-        //             width: 258.02px;
-        //         }
-        //         .type-of-mod-cards .card {
-        //             width: 541.33px;
-        //         }
-        //     }
-        // }
+        .banner-1-section .container-fluid .card .banner-1-content .banner-heading {
+            font-size: clamp(2.25rem, 2.797vw + 0.052rem, 2.5rem);
+            line-height: clamp(2.813rem, 3.497vw + 0.066rem, 3.125rem);
+        }
+        .category-section .container-fluid {
+            .category-content {
+                .category-cards .card {
+                    width: clamp(229.02px, calc(229.02px + 32.56 * ((100vw - 1200px) / 200)), 261.58px);
+                }
+                .type-of-mod-cards .card {
+                    width: clamp(483.33px, calc(483.33px + 63.85 * ((100vw - 1200px) / 200)), 547.18px);
+                }
+            }
+        }
+        .best-seller-section .container-fluid .best-seller-content .best-seller-cards .card {
+            width: clamp(229.72px, calc(229.72px + 31.86 * ((100vw - 1200px) / 200)), 261.58px);
+        }
     }
 }
 @media (min-width: 1400px) {
     main {
         .banner-1-section .container-fluid .card .banner-1-content {
-            width: 83.33%;
+            width: 83.33333333%;
         }
     }
 }
