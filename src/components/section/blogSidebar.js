@@ -100,19 +100,19 @@ class blogSidebar extends HTMLElement {
                             </svg>
                             <span class="date">${ post.postDate }</span>
                         </div>
-                        <h6 class="blog-title">${ post.postTitle }</h6>
+                        <a href="/pulsevape-app/blog-details.html?id=${ post.id }" class="blog-title">${ post.postTitle }</a>
                     </div>
                 `;
                 recentPostContainer.append(postCard);
             });
 
             const accordionContainer = document.querySelector(".accordion");
-            console.log(accordionContainer);
+            // console.log(accordionContainer);
 
             const blogDetailsPath = window.location.pathname.replace(/\.html$/, "").replace(/\/$/, "");
-            console.log(blogDetailsPath);
+            // console.log(blogDetailsPath);
 
-            if (blogDetailsPath === "/pulsevape-app/blog-details") {
+            if (blogDetailsPath === "/pulsevape-app/blog-details" || blogDetailsPath === "/blog-details") {
                 recentPostContainer.style.marginBottom = "16px"; // ADD MARGIN BOTTOM IN THE RECENT POST CONTAINER WHEN ITS IN BLOG DETAILS
 
                 const accordionTagItem = document.createElement("div");

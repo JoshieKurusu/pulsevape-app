@@ -52,10 +52,10 @@ class Footer extends HTMLElement {
                                 <h4 class="heading">Useful Links</h4>
                                 <ul class="useful-link-list">
                                     <li class="useful-link-item">
-                                        <a href="/about-us.html" class="useful-link">About Us</a>
+                                        <a href="/pulsevape-app/about-us.html" class="useful-link">About Us</a>
                                     </li>
                                     <li class="useful-link-item">
-                                        <a href="/shop.html" class="useful-link">Product Items</a>
+                                        <a href="/pulsevape-app/shop.html" class="useful-link">Product Items</a>
                                     </li>
                                     <li class="useful-link-item">
                                         <a href="#" class="useful-link">Contact Us</a>
