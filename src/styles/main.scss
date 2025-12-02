@@ -527,9 +527,14 @@
                                     }
                                 }
                                 .blog-title {
+                                    display: inline-block;
+                                    max-width: 124.23px;
+                                    overflow: hidden;
                                     margin: 0;
                                     color: #FFF;
                                     text-decoration: none;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
                                     @include transition(color 0.5s ease-in);
                                 }
                             }
@@ -580,6 +585,11 @@
             row-gap: 2px;
             @include flexbox(center, space-between);
             .blog-title {
+                display: inline-block;
+                width: 50%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 text-decoration: none;
                 color: #FFF;
                 cursor: pointer;
@@ -618,6 +628,7 @@
                 line-height: clamp(1.056rem, 0.681vw + 0.811rem, 1.138rem);
             }
             .title-date-container .blog-title {
+                width: clamp(115px, calc(115px + 81 * ((100vw - 576px) / 192)), 196px);
                 font-size: clamp(0.938rem, 2.094vw + 0.184rem, 1.188rem);
                 line-height: clamp(1.125rem, 2.513vw + 0.22rem, 1.425rem);
             }
@@ -640,6 +651,7 @@
                 align-items: start;
                 flex-direction: column;
                 .blog-title {
+                    width: 100%;
                     font-size: clamp(1rem, 1.794vw + 0.139rem, 1.25rem);
                     line-height: clamp(1.2rem, 2.152vw + 0.167rem, 1.5rem);
                 }
@@ -663,9 +675,20 @@
         }
     }
 }
+@mixin blogTitle-tooltip {
+    .tooltip .tooltip-inner {
+        max-width: none;
+        white-space: normal;
+        word-wrap: break-word;
+        font-size: clamp(0.75rem, 0vw + 0.75rem, 0.75rem);
+        line-height: clamp(0.9rem, 0vw + 0.9rem, 0.9rem);
+        @include font-family-subheading();
+    }
+}
 body {
     background: fixed url("../assets/images/whole-page-background.jpg") center / cover no-repeat;
     scroll-behavior: smooth;
+    @include blogTitle-tooltip();
 }
 header {
     .navbar {
