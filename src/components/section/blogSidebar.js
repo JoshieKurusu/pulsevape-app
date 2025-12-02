@@ -100,9 +100,16 @@ class blogSidebar extends HTMLElement {
                             </svg>
                             <span class="date">${ post.postDate }</span>
                         </div>
-                        <a href="/pulsevape-app/blog-details.html?id=${ post.id }" class="blog-title">${ post.postTitle }</a>
+                        <a href="/pulsevape-app/blog-details.html?id=${ post.id }" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="${ post.postTitle }" class="blog-title">${ post.postTitle }</a>
                     </div>
                 `;
+
+                // INITIALIZE TOOLTOP FOR THE ANCHOR INSIDE THIS CARD
+                const tooltipTrigger = postCard.querySelector('[data-bs-toggle="tooltip"]');
+                if (tooltipTrigger) {
+                    new bootstrap.Tooltip(tooltipTrigger);
+                }
+
                 recentPostContainer.append(postCard);
             });
 
@@ -165,6 +172,10 @@ class blogSidebar extends HTMLElement {
         catch (error) {
             console.error("Failed to fetch recent posts:", error);
         }
+
+        // THEN INITIALIZE TOOLTIPS
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        [...tooltipTriggerList].forEach(el => new bootstrap.Tooltip(el));
     }
 }
 customElements.define("blog-sidebar", blogSidebar);
